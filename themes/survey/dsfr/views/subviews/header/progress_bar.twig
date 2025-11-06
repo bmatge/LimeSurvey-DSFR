@@ -1,41 +1,36 @@
 {#
     LimeSurvey - DSFR Theme
-    Progress Bar / Stepper DSFR
+    Stepper DSFR officiel
 
-    This file generates the DSFR stepper component showing survey progress.
-    Uses the real number of question groups as steps.
-    @see: https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/indicateur-d-etapes/
+    Structure conforme : https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/indicateur-d-etapes/
 #}
 {% if aSurveyInfo.showprogress == 'Y' and aSurveyInfo.format != 'A' and not aSurveyInfo.aCompleted %}
     <!-- DSFR Stepper -->
     <div class="fr-container fr-my-4w">
-        {% set progressValue = aSurveyInfo.progress.value %}
-        {# Calculer le nombre d'étapes réel basé sur les groupes de questions #}
         {% set totalGroups = aSurveyInfo.aGroups ? aSurveyInfo.aGroups|length : (aSurveyInfo.totalsteps ? aSurveyInfo.totalsteps : 1) %}
         {% set currentGroup = aSurveyInfo.step ? aSurveyInfo.step : 1 %}
+        {% set nextGroup = currentGroup + 1 %}
 
         <div class="fr-stepper">
             <h2 class="fr-stepper__title">
-                <span class="visually-hidden">{{ sprintf(gT('You have completed %s%% of this survey'), progressValue) }}</span>
-                <span aria-hidden="true">
-                    {% if aSurveyInfo.groupname %}
-                        {{ aSurveyInfo.groupname }}
-                    {% else %}
-                        {{ gT("Survey in progress") }}
-                    {% endif %}
-                </span>
+                {% if aSurveyInfo.groupname %}
+                    {{ aSurveyInfo.groupname }}
+                {% else %}
+                    {{ sprintf(gT('Step %s'), currentGroup) }}
+                {% endif %}
+                <span class="fr-stepper__state">{{ sprintf(gT('Step %s of %s'), currentGroup, totalGroups) }}</span>
             </h2>
             <div class="fr-stepper__steps"
                  data-fr-current-step="{{ currentGroup }}"
                  data-fr-steps="{{ totalGroups }}"
                  aria-hidden="true">
             </div>
-            <p class="fr-stepper__details">
-                <span class="fr-text--bold">{{ progressValue }}%</span> {{ gT("completed") }}
-                {% if totalGroups > 1 %}
-                    - {{ sprintf(gT('Step %s of %s'), currentGroup, totalGroups) }}
-                {% endif %}
-            </p>
+            {% if nextGroup <= totalGroups and aSurveyInfo.aGroups and aSurveyInfo.aGroups[nextGroup] %}
+                <p class="fr-stepper__details">
+                    <span class="fr-text--bold">{{ gT("Next step:") }}</span>
+                    {{ aSurveyInfo.aGroups[nextGroup].group_name ? aSurveyInfo.aGroups[nextGroup].group_name : sprintf(gT('Step %s'), nextGroup) }}
+                </p>
+            {% endif %}
         </div>
     </div>
 {% endif %}
