@@ -8,15 +8,11 @@
  */
 
 /* ============================================
-   IMPORTS DSFR-CONNECT BOOTSTRAP
+   IMPORTS DSFR
    ============================================ */
 
-/*
- * DSFR-Connect Bootstrap v5 : permet d'utiliser les classes Bootstrap
- * avec le style DSFR automatiquement appliqué.
- * Cela résout les conflits entre Bootstrap (hérité de vanilla) et DSFR.
- */
-@import url('https://unpkg.com/dsfr-connect@1.0.0/dist/bootstrap-v5/index.css');
+/* Import du DSFR standard depuis CDN */
+@import url('https://unpkg.com/@gouvfr/dsfr@1.11/dist/dsfr.min.css');
 
 /* Import des icônes Remix Icon (utilisées par DSFR) */
 @import url('https://unpkg.com/@gouvfr/dsfr@1.11/dist/utility/icons/icons.min.css');
@@ -43,24 +39,42 @@
 }
 
 /* ============================================
-   AJUSTEMENTS BOOTSTRAP → DSFR
+   NEUTRALISATION BOOTSTRAP
    ============================================ */
 
 /*
- * DSFR-Connect gère déjà la conversion Bootstrap → DSFR
- * On garde juste quelques ajustements spécifiques pour LimeSurvey
+ * Le thème hérite de vanilla qui charge Bootstrap.
+ * On neutralise les classes Bootstrap pour éviter les conflits avec DSFR.
  */
 
-/* Assurer le fond blanc (au cas où) */
+/* Désactiver le fond gris de Bootstrap */
 .bg-light {
     background-color: #FFFFFF !important;
 }
 
-/* Neutraliser les paddings des containers pour laisser DSFR gérer */
+/* Neutraliser navbar Bootstrap (on utilise fr-header) */
+.navbar {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.navbar-light,
+.navbar-expand-md {
+    background-color: transparent !important;
+}
+
+/* Neutraliser les containers Bootstrap */
 .container,
 .container-fluid {
     padding-left: 0;
     padding-right: 0;
+    max-width: 100%;
+}
+
+/* Reset des boutons Bootstrap pour laisser DSFR gérer */
+.btn:not(.fr-btn) {
+    all: unset;
 }
 
 /* ============================================
