@@ -431,6 +431,19 @@ select:focus,
     position: relative;
 }
 
+/* IMPORTANT: Dans les tableaux, ces classes ne doivent PAS avoir de flex/margin */
+table .radio-item,
+table .checkbox-item,
+table .answer-item,
+table td.radio-item,
+table td.checkbox-item,
+table td.answer-item {
+    display: table-cell !important;
+    margin-bottom: 0 !important;
+    padding: 0.5rem !important;
+    position: static !important;
+}
+
 /* Cache l'input natif */
 input[type="radio"],
 input[type="checkbox"] {
