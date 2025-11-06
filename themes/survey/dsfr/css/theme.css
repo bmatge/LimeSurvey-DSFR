@@ -445,42 +445,16 @@ table td.answer-item {
 }
 
 /* ============================================
-   RADIO/CHECKBOX - DSFR NATIF UNIQUEMENT
+   RADIO/CHECKBOX - DSFR NATIF
    ============================================ */
 
-/*
- * IMPORTANT: On laisse le DSFR natif gérer les radio/checkbox.
- * Pas de styles custom qui entreraient en conflit.
- */
+/* Le DSFR gère les radio/checkbox dans .fr-radio-group et .fr-checkbox-group */
+/* Aucun override nécessaire - le DSFR fait tout */
 
-/* Désactiver tous les pseudo-éléments custom sur radio/checkbox */
-input[type="radio"] + label::before,
-input[type="radio"] + label::after,
-input[type="checkbox"] + label::before,
-input[type="checkbox"] + label::after {
-    display: none !important;
-}
-
-/* Réinitialiser les radio/checkbox pour utiliser le style natif DSFR */
-input[type="radio"],
-input[type="checkbox"] {
-    position: static !important;
-    opacity: 1 !important;
-    width: auto !important;
-    height: auto !important;
-}
-
-/* Dans les tableaux, style minimal */
+/* Dans les tableaux, centrer les inputs */
 table input[type="radio"],
 table input[type="checkbox"] {
     margin: 0 auto;
-    display: block;
-}
-
-/* Les labels dans les fr-radio-group et fr-checkbox-group sont gérés par DSFR */
-.fr-radio-group,
-.fr-checkbox-group {
-    /* DSFR gère tout */
 }
 
 /* Fin de la section radio/checkbox */
