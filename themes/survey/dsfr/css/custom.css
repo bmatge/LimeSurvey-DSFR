@@ -88,7 +88,68 @@ body > article {
 .fr-stepper__steps[data-fr-current-step="5"][data-fr-steps="5"]::after { width: 100%; }
 
 /* ============================================
+   TABLEAUX / ARRAYS
+   ============================================ */
+
+/* Fix pour les tableaux Array - empêcher form-control de casser le layout */
+.fr-table .form-control,
+table.fr-table input.form-control,
+table.table input.form-control,
+table.table-bordered input.form-control {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: inline-block !important;
+    box-sizing: border-box !important;
+}
+
+/* Les inputs dans les tableaux doivent rester dans leurs cellules */
+.fr-table td,
+table.table td,
+table.table-bordered td {
+    vertical-align: middle;
+    padding: 0.5rem;
+}
+
+.fr-table td input,
+.fr-table td textarea,
+table.table td input,
+table.table td textarea {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+}
+
+/* Empêcher les inputs de déborder des cellules */
+table td input.form-control {
+    max-width: 100% !important;
+}
+
+/* Responsive tables - scroll horizontal sur petit écran */
+.fr-table--responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .fr-table--responsive {
+        display: block;
+        width: 100%;
+    }
+
+    .fr-table--responsive table {
+        min-width: 600px; /* Force largeur min pour tableaux */
+    }
+}
+
+/* ============================================
    COMPOSANTS LIMESURVEY SPÉCIFIQUES
    ============================================ */
 
-/* TODO: Ajouter les styles spécifiques ici au fur et à mesure */
+/* Convertir form-control en fr-input dans les questions simples */
+input.form-control:not(.fr-table input),
+textarea.form-control:not(.fr-table textarea),
+select.form-control:not(.fr-table select) {
+    /* Hérite des styles fr-input si pas déjà appliqué */
+    font-family: "Marianne", Arial, sans-serif;
+    line-height: 1.5;
+}
