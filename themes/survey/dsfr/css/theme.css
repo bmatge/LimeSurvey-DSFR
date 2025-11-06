@@ -8,17 +8,21 @@
  */
 
 /* ============================================
-   IMPORTS DSFR-CONNECT (LOCAL)
+   IMPORTS DSFR NATIF
    ============================================ */
 
 /*
- * DSFR-Connect Bootstrap v5 - Version 1.1.2 (hébergé localement)
- * Convertit automatiquement les classes Bootstrap en style DSFR
+ * DSFR natif v1.11
  *
- * Fichier téléchargé depuis npm (dsfr-connect@1.1.2)
- * CDN unpkg bloquait le fichier à cause du MIME type
+ * NOTE: On N'utilise PAS DSFR-Connect car nos templates sont déjà
+ * en DSFR natif (fr-header, fr-btn, etc.). DSFR-Connect est fait
+ * pour convertir les classes Bootstrap, mais on a déjà tout converti.
+ *
+ * Utiliser DSFR-Connect créerait des conflits car il s'attend à des
+ * classes Bootstrap (.navbar, .btn) alors qu'on utilise des classes
+ * DSFR natives (.fr-header, .fr-btn).
  */
-@import url('./dsfr-connect-bootstrap-v5.css');
+@import url('https://unpkg.com/@gouvfr/dsfr@1.11/dist/dsfr.min.css');
 
 /* Import des icônes Remix Icon (utilisées par DSFR) */
 @import url('https://unpkg.com/@gouvfr/dsfr@1.11/dist/utility/icons/icons.min.css');
