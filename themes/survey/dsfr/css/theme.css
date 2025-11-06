@@ -99,6 +99,19 @@ body > article {
     background-color: #FFFFFF !important;
 }
 
+/* Forcer le fond blanc pour tous les containers principaux */
+#outerframeContainer,
+.outerframe,
+.ls-survey-container,
+.survey-question-container {
+    background-color: #FFFFFF !important;
+}
+
+/* Assurer que les containers DSFR sont blancs */
+.fr-container {
+    background-color: transparent;
+}
+
 /* ============================================
    HEADER DSFR (Navigation Bar)
    ============================================ */
@@ -625,9 +638,16 @@ button[type="submit"]:focus {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #DDDDDD;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+/* Les boutons de navigation DSFR n'ont pas besoin de ces marges */
+.fr-container .fr-btn {
+    margin-top: 0 !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
 }
 
 @media (max-width: 768px) {

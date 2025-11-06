@@ -39,16 +39,9 @@ For the survey navigator ("Next", "Back", etc.), see: navigation/navigator.twig
                             {% endif %}
                         </div>
                         <div class="fr-header__service">
-                            {% if aSurveyInfo.options.brandlogo == "on" and aSurveyInfo.options.brandlogofile %}
-                                <a href="{{ aSurveyInfo.surveyUrl }}" title="{{ gT("Home") }} - {{ aSurveyInfo.name }}">
-                                    {{ image(aSurveyInfo.options.brandlogofile, aSurveyInfo.name, {"class": "fr-responsive-img", "style": "max-height:3rem"}) }}
-                                    <p class="fr-header__service-title">{{ aSurveyInfo.name }}</p>
-                                </a>
-                            {% else %}
-                                <a href="{{ aSurveyInfo.surveyUrl }}" title="{{ gT("Home") }} - {{ aSurveyInfo.name }}">
-                                    <p class="fr-header__service-title">{{ aSurveyInfo.name }}</p>
-                                </a>
-                            {% endif %}
+                            <a href="{{ aSurveyInfo.surveyUrl }}" title="{{ gT("Home") }} - {{ aSurveyInfo.name }}">
+                                <p class="fr-header__service-title">{{ aSurveyInfo.name }}</p>
+                            </a>
                             {% if aSurveyInfo.description %}
                                 <p class="fr-header__service-tagline">{{ aSurveyInfo.description|striptags }}</p>
                             {% endif %}
