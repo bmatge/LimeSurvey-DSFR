@@ -1,38 +1,40 @@
-
 {#
 /**
- * Shortfreetext, textarea style, item Html
+ * Shortfreetext - DSFR Theme
+ * Textarea style with DSFR fr-input component
  *
- * @var $freeTextId                 answer{$ia[1]}
+ * Variables available:
+ * @var $freeTextId
  * @var $extraclass
- * @var $labelText                  gT('Your answer')
- * @var $name                       $ia[1]
+ * @var $labelText
+ * @var $name
  * @var $drows
  * @var $tiwidth
- * @var $checkconditionFunction      $checkconditionFunction.'(this.value, this.name, this.type)
  * @var $dispVal
  * @var $placeholder
+ * @var $maxlength
  */
 #}
 
-<!-- Short free text, textarea item -->
-
-<!-- answer -->
+<!-- DSFR Textarea -->
 {% if withColumn %}
-<div class='{{ coreClass }} row'>
+<div class='{{ coreClass }} fr-grid-row'>
     <div class="{{ extraclass }}">
 {% else %}
 <div class='{{ coreClass }} {{ extraclass }}'>
 {% endif %}
+    <div class="fr-input-group">
         {% if prefix != '' or suffix != '' %}
-            <div class="ls-input-group">
+            <div class="fr-input-wrap">
         {% endif %}
             <!-- Prefix -->
-            {% if prefix!= '' %}
-                <div class='ls-input-group-extra prefix-text prefix'>{{ processString(prefix) }}</div>
+            {% if prefix != '' %}
+                <span class="fr-text--sm fr-text--bold fr-mb-1w fr-display-block">{{ processString(prefix) }}</span>
             {% endif %}
+
+            <!-- Textarea DSFR -->
             <textarea
-                class="form-control textarea {{ kpclass }}"
+                class="fr-input {{ kpclass }}"
                 name="{{ name }}"
                 id="{{ freeTextId }}"
                 rows="{{ drows }}"
@@ -45,11 +47,12 @@
 
             <!-- Suffix -->
             {% if suffix %}
-                <div class='ls-input-group-extra suffix-text suffix'>{{ processString(suffix) }}</div>
+                <span class="fr-text--sm fr-text--bold fr-mt-1w fr-display-block">{{ processString(suffix) }}</span>
             {% endif %}
         {% if prefix != '' or suffix != '' %}
             </div>
         {% endif %}
+    </div>
 {% if withColumn %}
     </div>
 </div>

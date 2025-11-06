@@ -1,7 +1,9 @@
 {#
 /**
- * Multiple Choice Html : item row
+ * Radio Item Row - DSFR Theme
+ * Single radio button with DSFR fr-radio-group
  *
+ * Variables available:
  * @var $name
  * @var $code
  * @var $answer
@@ -10,8 +12,8 @@
  */
 #}
 
-<!-- answer_row -->
-<li id='javatbd{{ myfname }}' class='answer-item radio-item' {{ sDisplayStyle }} >
+<!-- DSFR Radio Item -->
+<div id='javatbd{{ myfname }}' class='fr-radio-group' {{ sDisplayStyle }}>
     <input
         type="radio"
         value="{{ code }}"
@@ -19,9 +21,9 @@
         id="answer{{ name }}{{ code }}"
         {{ checkedState }}
         onclick="if (document.getElementById('answer{{ name }}othertext') != null) document.getElementById('answer{{ name }}othertext').value='';checkconditions(this.value, this.name, this.type)"
-     />
-    <label for="answer{{ name }}{{ code }}" class="control-label radio-label">
+    />
+    <label class="fr-label" for="answer{{ name }}{{ code }}">
         {{ processString(answer) }}
     </label>
-</li>
+</div>
 <!-- end of answer_row -->

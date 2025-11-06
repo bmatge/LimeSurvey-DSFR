@@ -1,27 +1,17 @@
 {#
 /**
- * 5 point choice Html
- *
- * @var $sRows         : the rows, generated with the view item_row.php
- * @var $slider_rating : slider rating display in question attribute
- *
- * @var $id
- * @var $sliderId  $ia[0];
- * @var $name'                   => $ia[1],
- * @var $sessionValue
+ * 5-Point Choice - DSFR Theme
+ * Inline radio buttons (1 2 3 4 5) with DSFR fr-radio-group
  */
 #}
 
-<!-- 5 point choice -->
-<!-- answer -->
+<!-- 5-Point Choice DSFR -->
+<fieldset class="fr-fieldset" aria-labelledby="ls-question-text-{{ basename }}">
+    <div class="fr-fieldset__content">
+        <div class="fr-grid-row fr-grid-row--gutters">
+            {{ sRows }}
+        </div>
+    </div>
+</fieldset>
 
-<ul class="{{coreClass}} list-unstyled list-group list-group-horizontal" role="radiogroup" aria-labelledby="ls-question-text-{{name}}">
-    {% for aRow in aRows %}
-        {% include './survey/questions/answer/5pointchoice/rows/item_row.twig' with aRow %}
-    {% endfor %}
-</ul>
-
-{#/* Value for expression manager javascript (use id) ; no need to submit */#}
-<input type="hidden" name="java{{name}}" id="java{{name}}" disabled value={{sessionValue}} />
-
-
+{{ C.Html.hiddenField("java"~name,value,({'id' : "java"~name,'disabled' : true})) }}

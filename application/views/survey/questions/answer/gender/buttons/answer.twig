@@ -1,46 +1,47 @@
 {#
 /**
- * Gender question, button item Html
- *
- * @var $name
- * @var $checkconditionFunction
- * @var $fChecked
- * @var $mChecked
- * @var $naChecked
- * @var $value
+ * Gender Question - DSFR Theme
+ * Radio buttons with DSFR fr-radio-group
  */
 #}
 
-<!--Gender question, buttons display -->
-<!-- answer -->
-<div class="ls-answers answers-list gender-button btn-group btn-group-justified" role="radiogroup" aria-labelledby="ls-question-text-{{ basename }}">
-    <!-- Female -->
+<!-- Gender DSFR -->
+<fieldset class="fr-fieldset" aria-labelledby="ls-question-text-{{ basename }}">
+    <div class="fr-fieldset__content">
+        <div class="fr-grid-row fr-grid-row--gutters">
+            <!-- Female -->
+            <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+                <div class="fr-radio-group">
+                    <input type="radio" name="{{ name }}" id="answer{{ name }}F" value="F" {{ fChecked }}>
+                    <label class="fr-label" for="answer{{ name }}F">
+                        <span class="ri-women-line" aria-hidden="true"></span> {{ gT('Female') }}
+                    </label>
+                </div>
+            </div>
 
-    <input type="radio" class="btn-check ls-button-radio" name="{{ name }}" id="answer{{ name }}F" value="F" {{ fChecked }}>
-        <label class="btn btn-primary mb-3 answer-item ls-button-label" id="javatbd{{ name }}F" for="answer{{ name }}F">
-        <span class="fa fa-venus ri-women-line ls-icon" aria-hidden="true"></span> {{ gT('Female') }}
-    </label>
+            <!-- Male -->
+            <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+                <div class="fr-radio-group">
+                    <input type="radio" name="{{ name }}" id="answer{{ name }}M" value="M" {{ mChecked }}>
+                    <label class="fr-label" for="answer{{ name }}M">
+                        <span class="ri-men-line" aria-hidden="true"></span> {{ gT('Male') }}
+                    </label>
+                </div>
+            </div>
 
-    <!-- Male -->
-    <input type="radio" class="btn-check ls-button-radio" name="{{ name }}" id="answer{{ name }}M" value="M" {{ mChecked }}>
-        <label class="btn btn-primary mb-3 answer-item ls-button-label" id="javatbd{{ name }}M" for="answer{{ name }}M">
-        <span class="fa fa-mars ri-men-line ls-icon" aria-hidden="true"></span> {{ gT('Male') }}
-    </label>
-
-<!-- No answer -->
-    {% if noAnswer %}
-        <input type="radio" class="btn-check ls-button-radio" name="{{ name }}" id="answer{{ name }}" value="" {{ naChecked }}>
-        <label class="btn btn-primary mb-3 answer-item ls-button-label" id="javatbd{{ name }}" for="answer{{ name }}">
-            <span class="fa fa-circle-thin ri-checkbox-blank-circle-line ls-icon" aria-hidden="true"></span> {{ gT('No answer') }}
-        </label>
-
-    {% endif %}
-</div>
-{# Value for expression manager javascript (use id) ; no need to submit #}
+            <!-- No answer -->
+            {% if noAnswer %}
+                <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+                    <div class="fr-radio-group">
+                        <input type="radio" name="{{ name }}" id="answer{{ name }}" value="" {{ naChecked }}>
+                        <label class="fr-label" for="answer{{ name }}">
+                            {{ gT('No answer') }}
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</fieldset>
 
 {{ C.Html.hiddenField('java' ~ name, value, ({'id' : 'java' ~ name,'disabled' : 'true'})) }}
-
-<!-- end of answer -->
-
-
-

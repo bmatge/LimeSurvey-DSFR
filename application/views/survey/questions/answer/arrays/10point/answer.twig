@@ -1,35 +1,26 @@
 {#
 /**
- * array 10 point choice Html
- *
- * @var $sColumns   : the columns, generated with the view columns/col.php
- * @var $sHeaders   : the headers, generated with the view rows/cell/thead.php
- * @var $sRows      : the rows, generated with the view rows/answer_row.php
- * @var $extraclass
- * @var $answerwidth
+ * Array 10-Point Choice - DSFR Theme
+ * Table with 10 columns (1-10 scale)
  */
 #}
-<!-- Array 10 point choice -->
 
-<!-- answer -->
-<div class="ls-table-wrapper" aria-labelledby="ls-question-text-{{ basename }}">
-    <table class="{{ coreClass }} table table-bordered table-hover table-10-point-array">
-        <!-- Columns -->
+<!-- DSFR Array 10-Point Table -->
+<div class="ls-table-wrapper fr-table--responsive" role="group" aria-labelledby="ls-question-text-{{ basename }}">
+    <table class="{{ coreClass }} fr-table fr-table--bordered" role="group" aria-labelledby="ls-question-text-{{ basename }}">
         <colgroup class="col-responses">
             <col class="col-answers" style='width: {{ answerwidth }}%;' />
-                {# columns/col.php #}
-                {{ sColumns }}
+            {{ sColumns }}
         </colgroup>
+
         <thead>
             <tr class="ls-heading">
-                    {# rows/cell/thead.php #}
-                    {{ sHeaders }}
+                {{ sHeaders }}
             </tr>
         </thead>
+
         <tbody>
-                {# rows/answer_row.php #}
-                {{ sRows }}
+            {{ sRows }}
         </tbody>
     </table>
 </div>
-<!-- end of answer -->

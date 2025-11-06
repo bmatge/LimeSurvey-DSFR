@@ -1,25 +1,30 @@
 {#
 /**
- * List Radio Html
+ * List Radio - DSFR Theme
+ * Radio buttons with DSFR fr-radio-group component
  *
+ * Variables available:
  * @var $name
  * @var $value
+ * @var $sRows
+ * @var $iNbCols
  */
 #}
 
-<!-- List Radio -->
-
-<!-- answer -->
+<!-- DSFR Radio List -->
 {{ sTimer }}
-<ul class="{{ coreClass }} list-unstyled {% if iNbCols > 1 %} ls-column-count-{{iNbCols}}{% endif %}" role="radiogroup" aria-labelledby="ls-question-text-{{ name }}"{% if iNbCols > 1 %} data-column-count={{iNbCols}}{% endif %}>
-    {# rows/answer_row.php #}
-    {{ sRows }}
-</ul>
-{# Value for expression manager javascript (use id) ; no need to submit #}
+<fieldset class="fr-fieldset {{ coreClass }}" aria-labelledby="ls-question-text-{{ name }}">
+    <div class="fr-fieldset__content">
+        <div class="{% if iNbCols > 1 %}fr-grid-row fr-grid-row--gutters{% endif %}">
+            {{ sRows }}
+        </div>
+    </div>
+</fieldset>
+
+{# Value for expression manager javascript #}
 {{ C.Html.hiddenField("java"~name,value,({
     'id' : "java"~name,
     'disabled' : true,
 }))
 }}
 <!-- end of answer -->
- 
