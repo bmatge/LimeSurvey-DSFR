@@ -25,25 +25,27 @@
     These warnings are complementary to the popup ones. If you're using popups (set in config file), and then don't want to show these alerts, you can uncomment the hiddenClass checker
 #}
 
-{# Preview mode warning #}
+{# Preview mode warning - DSFR Alert #}
 {% if (aSurveyInfo.active != 'Y') and (not aSurveyInfo.popupPreview) %}
     <!-- Preview mode warning -->
-    <div class="{{ aSurveyInfo.class.activealert }} row alert alert-warning alert-dismissible fade in show alert-dismissible" {{ aSurveyInfo.attr.activealert }} >
-        <button  {{ aSurveyInfo.attr.activealertbutton }} class="{{ aSurveyInfo.class.activealertbutton }} btn-close" ></button>
-        {{ gT("This survey is currently not active. You will not be able to save your responses.") }}
+    <div class="fr-container fr-my-2w">
+        <div class="fr-alert fr-alert--warning {{ aSurveyInfo.class.activealert }}" {{ aSurveyInfo.attr.activealert }}>
+            <h3 class="fr-alert__title">{{ gT("Preview mode") }}</h3>
+            <p>{{ gT("This survey is currently not active. You will not be able to save your responses.") }}</p>
+        </div>
     </div>
 {% endif %}
 
-{# Error Html warnings #}
+{# Error Html warnings - DSFR Alert Error #}
 {% if aSurveyInfo.errorHtml.show %}
-    <p class=' {# Uncomment to hide when popup is on { aSurveyInfo.errorHtml.hiddenClass } #} row fade in show alert-dismissible alert alert-danger {{ aSurveyInfo.class.errorHtml }} ' role='alert'>
-        <button  {{ aSurveyInfo.attr.errorHtmlbutton }} class="{{ aSurveyInfo.class.errorHtmlbutton }} btn-close" ></button>
-    {% for aMessage in aSurveyInfo.errorHtml.messages  %}
-        <!-- Error Html warnings -->
-            {{ aMessage }}
-            <br/>
-    {% endfor %}
-    </p>
+    <div class="fr-container fr-my-2w">
+        <div class="fr-alert fr-alert--error {{ aSurveyInfo.class.errorHtml }}" role="alert" {{ aSurveyInfo.attr.errorHtml }}>
+            <h3 class="fr-alert__title">{{ gT("Error") }}</h3>
+            {% for aMessage in aSurveyInfo.errorHtml.messages %}
+                <p>{{ aMessage }}</p>
+            {% endfor %}
+        </div>
+    </div>
 {% endif %}
 
 {{ makeFlashMessage() }}
