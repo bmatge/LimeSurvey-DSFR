@@ -255,6 +255,23 @@
                 }, 50);
             }
         }, true);
+
+        // Bloquer les événements LimeSurvey qui causent le scroll
+        document.addEventListener('ClassChangeError', function(e) {
+            e.stopPropagation();
+        }, true);
+
+        document.addEventListener('ClassChangeGood', function(e) {
+            e.stopPropagation();
+        }, true);
+
+        // Override scrollIntoView pour les éléments de tableau
+        const originalScrollIntoView = Element.prototype.scrollIntoView;
+        Element.prototype.scrollIntoView = function() {
+            if (!this.closest('table')) {
+                originalScrollIntoView.apply(this, arguments);
+            }
+        };
     });
 
 })();
