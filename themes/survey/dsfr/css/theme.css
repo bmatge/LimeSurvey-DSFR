@@ -8,14 +8,17 @@
  */
 
 /* ============================================
-   IMPORTS DSFR-CONNECT
+   IMPORTS DSFR-CONNECT (LOCAL)
    ============================================ */
 
 /*
- * DSFR-Connect Bootstrap v5 - Version 1.1.2
+ * DSFR-Connect Bootstrap v5 - Version 1.1.2 (hébergé localement)
  * Convertit automatiquement les classes Bootstrap en style DSFR
+ *
+ * Fichier téléchargé depuis npm (dsfr-connect@1.1.2)
+ * CDN unpkg bloquait le fichier à cause du MIME type
  */
-@import url('https://unpkg.com/dsfr-connect@1.1.2/dist/bootstrap-v5.css');
+@import url('./dsfr-connect-bootstrap-v5.css');
 
 /* Import des icônes Remix Icon (utilisées par DSFR) */
 @import url('https://unpkg.com/@gouvfr/dsfr@1.11/dist/utility/icons/icons.min.css');
