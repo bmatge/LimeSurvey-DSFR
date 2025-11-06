@@ -1,24 +1,40 @@
 {#
-    LimeSurvey
-    Copyright (C) 2007-2017 The LimeSurvey Project Team / Louis Gac
-    All rights reserved.
-    License: GNU/GPL License v2 or later, see LICENSE.php
-    LimeSurvey is free software. This version may have been modified pursuant
-    to the GNU General Public License, and as distributed it includes or
-    is derivative of works licensed under the GNU General Public License or
-    other free or open source software licenses.
-    See COPYRIGHT.php for copyright notices and details.
+    LimeSurvey - DSFR Theme
+    Question Container with DSFR styling
 
-
-
-    (¯`·._.·(¯`·._.· Question Container  ·._.·´¯)·._.·´¯)
-
-    The div containing the question is one of tag that could often change from a template to another
-    Different classes, options, etc
-    So we separate it
+    The container wraps each question with DSFR classes and structure.
+    Provides consistent spacing and error handling.
 #}
-<!-- Question {{ aQuestion.qid  }}  -->
-<div {{ aQuestion.attributes }} class="row {{ aQuestion.class }} {{ aQuestion.input_error_class }} {{ aSurveyInfo.class.questioncontainer }}" {{ aSurveyInfo.attr.questioncontainer }}>
+
+<!-- Question {{ aQuestion.qid }} -->
+<div {{ aQuestion.attributes }}
+     class="fr-mb-6w {{ aQuestion.class }} {{ aQuestion.input_error_class }} {{ aSurveyInfo.class.questioncontainer }} {% if aQuestion.input_error_class %}fr-input-group--error{% endif %}"
+     {{ aSurveyInfo.attr.questioncontainer }}>
+
+    {# Question number badge if enabled #}
+    {% if aSurveyInfo.options.showqnumcode != 'N' and aQuestion.mandatory != 'Y' %}
+        <p class="fr-badge fr-badge--sm fr-badge--info fr-mb-2w">
+            {% if aSurveyInfo.options.showqnumcode == 'C' %}
+                {{ aQuestion.code }}
+            {% elseif aSurveyInfo.options.showqnumcode == 'B' %}
+                {{ aQuestion.number }} - {{ aQuestion.code }}
+            {% else %}
+                {{ gT("Question") }} {{ aQuestion.number }}
+            {% endif %}
+        </p>
+    {% elseif aQuestion.mandatory == 'Y' %}
+        <p class="fr-badge fr-badge--sm fr-badge--error fr-mb-2w">
+            {% if aSurveyInfo.options.showqnumcode == 'C' %}
+                {{ aQuestion.code }} *
+            {% elseif aSurveyInfo.options.showqnumcode == 'B' %}
+                {{ aQuestion.number }} - {{ aQuestion.code }} *
+            {% else %}
+                {{ gT("Question") }} {{ aQuestion.number }} *
+            {% endif %}
+        </p>
+    {% endif %}
+
+    {# Question content #}
     {{ include('./subviews/survey/question.twig') }}
 </div>
-<!-- End of question  {{ aQuestion.qid  }}  -->
+<!-- End of question {{ aQuestion.qid }} -->
