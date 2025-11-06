@@ -7,6 +7,19 @@
     'use strict';
 
     // ============================================
+    // SUPPRESSION DES ERREURS BOOTSTRAP
+    // ============================================
+
+    // Capturer et ignorer les erreurs Bootstrap qui ne nous concernent pas
+    window.addEventListener('error', function(e) {
+        // Ignorer les erreurs Bootstrap liées aux modals/tooltips
+        if (e.message && e.message.includes('bootstrap')) {
+            e.preventDefault();
+            return false;
+        }
+    }, true);
+
+    // ============================================
     // CHARGEMENT DU DSFR
     // ============================================
 
