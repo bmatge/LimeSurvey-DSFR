@@ -3,14 +3,16 @@
     Progress Bar / Stepper DSFR
 
     This file generates the DSFR stepper component showing survey progress.
+    Uses the real number of question groups as steps.
     @see: https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/indicateur-d-etapes/
 #}
 {% if aSurveyInfo.showprogress == 'Y' and aSurveyInfo.format != 'A' and not aSurveyInfo.aCompleted %}
     <!-- DSFR Stepper -->
     <div class="fr-container fr-my-4w">
         {% set progressValue = aSurveyInfo.progress.value %}
-        {% set currentStep = aSurveyInfo.gid ? aSurveyInfo.gid : 1 %}
-        {% set totalSteps = aSurveyInfo.totalsteps ? aSurveyInfo.totalsteps : 100 %}
+        {# Calculer le nombre d'étapes réel basé sur les groupes de questions #}
+        {% set totalGroups = aSurveyInfo.aGroups ? aSurveyInfo.aGroups|length : (aSurveyInfo.totalsteps ? aSurveyInfo.totalsteps : 1) %}
+        {% set currentGroup = aSurveyInfo.step ? aSurveyInfo.step : 1 %}
 
         <div class="fr-stepper">
             <h2 class="fr-stepper__title">
@@ -19,17 +21,20 @@
                     {% if aSurveyInfo.groupname %}
                         {{ aSurveyInfo.groupname }}
                     {% else %}
-                        {{ sprintf(gT('Step %s of %s'), currentStep, totalSteps) }}
+                        {{ gT("Survey in progress") }}
                     {% endif %}
                 </span>
             </h2>
             <div class="fr-stepper__steps"
-                 data-fr-current-step="{{ currentStep }}"
-                 data-fr-steps="{{ totalSteps }}"
+                 data-fr-current-step="{{ currentGroup }}"
+                 data-fr-steps="{{ totalGroups }}"
                  aria-hidden="true">
             </div>
             <p class="fr-stepper__details">
                 <span class="fr-text--bold">{{ progressValue }}%</span> {{ gT("completed") }}
+                {% if totalGroups > 1 %}
+                    - {{ sprintf(gT('Step %s of %s'), currentGroup, totalGroups) }}
+                {% endif %}
             </p>
         </div>
     </div>

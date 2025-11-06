@@ -39,6 +39,39 @@
 }
 
 /* ============================================
+   NEUTRALISATION BOOTSTRAP
+   ============================================ */
+
+/* Désactiver le fond gris de Bootstrap qui entre en conflit */
+.bg-light {
+    background-color: transparent !important;
+}
+
+/* Neutraliser les classes navbar Bootstrap (on utilise DSFR maintenant) */
+.navbar {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.navbar-light {
+    background-color: transparent !important;
+}
+
+/* Neutraliser les containers Bootstrap qui entrent en conflit */
+.container,
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Reset des boutons Bootstrap pour utiliser DSFR */
+.btn {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* ============================================
    RESET & BASE
    ============================================ */
 
@@ -48,6 +81,7 @@
 
 html {
     font-size: 16px;
+    background-color: #FFFFFF;
 }
 
 body {
@@ -55,9 +89,14 @@ body {
     font-size: 1rem;
     line-height: 1.5;
     color: #161616;
-    background-color: var(--grey-light);
+    background-color: #FFFFFF !important; /* Fond blanc au lieu de gris */
     margin: 0;
     padding: 0;
+}
+
+/* Assurer que le body et article ont un fond blanc */
+body > article {
+    background-color: #FFFFFF !important;
 }
 
 /* ============================================
