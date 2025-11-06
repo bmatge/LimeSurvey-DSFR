@@ -8,11 +8,14 @@
  */
 
 /* ============================================
-   IMPORTS DSFR
+   IMPORTS DSFR-CONNECT
    ============================================ */
 
-/* Import du DSFR standard depuis CDN */
-@import url('https://unpkg.com/@gouvfr/dsfr@1.11/dist/dsfr.min.css');
+/*
+ * DSFR-Connect Bootstrap v5 - Version 1.1.2
+ * Convertit automatiquement les classes Bootstrap en style DSFR
+ */
+@import url('https://unpkg.com/dsfr-connect@1.1.2/dist/bootstrap-v5.css');
 
 /* Import des icônes Remix Icon (utilisées par DSFR) */
 @import url('https://unpkg.com/@gouvfr/dsfr@1.11/dist/utility/icons/icons.min.css');
