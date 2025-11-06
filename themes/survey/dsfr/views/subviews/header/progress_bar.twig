@@ -1,33 +1,36 @@
 {#
-    LimeSurvey
-    Copyright (C) 2007-2017 The LimeSurvey Project Team / Louis Gac
-    All rights reserved.
-    License: GNU/GPL License v2 or later, see LICENSE.php
-    LimeSurvey is free software. This version may have been modified pursuant
-    to the GNU General Public License, and as distributed it includes or
-    is derivative of works licensed under the GNU General Public License or
-    other free or open source software licenses.
-    See COPYRIGHT.php for copyright notices and details.
+    LimeSurvey - DSFR Theme
+    Progress Bar / Stepper DSFR
 
-    (¯`·._.·(¯`·._.· Top Container·._.·´¯)·._.·´¯)
-
-    This file generates the top container. It's above the form itself, and contains the progress bar.
-    The progress bar is a Bootstrap progress bar.
-    @see: http://getbootstrap.com/components/#progress
-
+    This file generates the DSFR stepper component showing survey progress.
+    @see: https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/indicateur-d-etapes/
 #}
-{# do not show if : All in one or is not Y or on aCompleted #}
 {% if aSurveyInfo.showprogress == 'Y' and aSurveyInfo.format != 'A' and not aSurveyInfo.aCompleted %}
-    <!-- Top container -->
-    <div class="{{ aSurveyInfo.class.topcontainer  }} space-col"  {{ aSurveyInfo.attr.topcontainer  }} >
-        <div class="{{ aSurveyInfo.class.topcontent  }} container-fluid" {{ aSurveyInfo.attr.topcontent  }} >
-            {% set progressValue  = aSurveyInfo.progress.value %}
-            <div class="visually-hidden">{{ sprintf(gT('You have completed %s%% of this survey'),progressValue) }}</div>
-                <div class="{{ aSurveyInfo.class.progress  }}" {{ aSurveyInfo.attr.progress  }}  aria-hidden="true">
-                    <div class="{{ aSurveyInfo.class.progressbar  }}" {{ aSurveyInfo.attr.progressbar  }} style="min-width: 2em; width: {{ progressValue }}%;">
-                        {{ progressValue }}%
-                    </div>
-                </div>
+    <!-- DSFR Stepper -->
+    <div class="fr-container fr-my-4w">
+        {% set progressValue = aSurveyInfo.progress.value %}
+        {% set currentStep = aSurveyInfo.gid ? aSurveyInfo.gid : 1 %}
+        {% set totalSteps = aSurveyInfo.totalsteps ? aSurveyInfo.totalsteps : 100 %}
+
+        <div class="fr-stepper">
+            <h2 class="fr-stepper__title">
+                <span class="visually-hidden">{{ sprintf(gT('You have completed %s%% of this survey'), progressValue) }}</span>
+                <span aria-hidden="true">
+                    {% if aSurveyInfo.groupname %}
+                        {{ aSurveyInfo.groupname }}
+                    {% else %}
+                        {{ sprintf(gT('Step %s of %s'), currentStep, totalSteps) }}
+                    {% endif %}
+                </span>
+            </h2>
+            <div class="fr-stepper__steps"
+                 data-fr-current-step="{{ currentStep }}"
+                 data-fr-steps="{{ totalSteps }}"
+                 aria-hidden="true">
+            </div>
+            <p class="fr-stepper__details">
+                <span class="fr-text--bold">{{ progressValue }}%</span> {{ gT("completed") }}
+            </p>
         </div>
     </div>
 {% endif %}

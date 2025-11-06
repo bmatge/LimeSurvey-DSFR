@@ -68,12 +68,12 @@
 #}
 
 <!DOCTYPE html>
-<html lang="{{ aSurveyInfo.languagecode }}" dir="{{ aSurveyInfo.dir }}" class="{{ aSurveyInfo.languagecode }} dir-{{ aSurveyInfo.dir }} {{ aSurveyInfo.class.html }}" {{ aSurveyInfo.attr.html }}>
+<html lang="{{ aSurveyInfo.languagecode }}" dir="{{ aSurveyInfo.dir }}" class="{{ aSurveyInfo.languagecode }} dir-{{ aSurveyInfo.dir }} {{ aSurveyInfo.class.html }}" {{ aSurveyInfo.attr.html }} data-fr-theme="{{ aSurveyInfo.options.dsfr_theme ? aSurveyInfo.options.dsfr_theme : 'light' }}">
     {% block head %}
     {# Headers, metadata, etc #}
     {{ include('./subviews/header/head.twig') }}
     {% endblock %}
-    <body class=" {{ aSurveyInfo.class.body }} font-{{  aSurveyInfo.options.font }} lang-{{aSurveyInfo.languagecode}} {{aSurveyInfo.surveyformat}} {% if( aSurveyInfo.options.brandlogo == "on") %}brand-logo{%endif%}" {{ aSurveyInfo.attr.body }} data-thememode="{{ aSurveyInfo.options.thememode ? aSurveyInfo.options.thememode : 'light' }}">
+    <body class=" {{ aSurveyInfo.class.body }} lang-{{aSurveyInfo.languagecode}} {{aSurveyInfo.surveyformat}} {% if( aSurveyInfo.options.brandlogo == "on") %}brand-logo{%endif%}" {{ aSurveyInfo.attr.body }}>
 
         {# Notice if emcache is on or off, used by tests. #}
         {% if aSurveyInfo.emcache %}
