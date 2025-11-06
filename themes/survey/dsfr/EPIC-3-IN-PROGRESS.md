@@ -103,13 +103,13 @@
 |------------|----------|--------|--------|
 | US-3.1 : Texte Court | P0 | ✅ 100% | 8h |
 | US-3.2 : Texte Long (Textarea) | P0 | ✅ 100% | 6h |
-| US-3.3 : Numérique | P0 | ⚪ 0% | 6h |
-| US-3.4 : Radio List | P0 | ⚪ 0% | 12h |
-| US-3.5 : Checkbox List | P0 | ⚪ 0% | 12h |
-| US-3.6 : Dropdown | P0 | ⚪ 0% | 8h |
-| US-3.7 : Yes/No | P0 | ⚪ 0% | 4h |
+| US-3.3 : Numérique | P0 | ✅ 100% | 6h |
+| US-3.4 : Radio List | P0 | ✅ 100% | 12h |
+| US-3.5 : Checkbox List | P0 | ✅ 100% | 12h |
+| US-3.6 : Dropdown | P0 | ✅ 100% | 8h |
+| US-3.7 : Yes/No | P0 | ✅ 100% (uses Radio) | 4h |
 | US-3.8 : Container | P0 | ⚪ 0% | 6h |
-| **TOTAL** | | **~23%** | **62h** |
+| **TOTAL** | | **~90%** | **62h** |
 
 ---
 
