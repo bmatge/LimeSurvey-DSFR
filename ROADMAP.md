@@ -899,10 +899,10 @@ MVP (2 sem) ──→ V1.0 (4 sem) ──→ V1.5 (6 sem) ──→ V2.0 (8 sem)
 | **1. Foundation** | P0 | 22h | 0.5 | ✅ 100% COMPLÉTÉ |
 | **2. Layout & Nav** | P0 | 40h | 1 | ✅ 100% COMPLÉTÉ |
 | **3. Questions P0** | P0 | 62h | 1.5 | ✅ 100% COMPLÉTÉ |
-| **4. Messages & Workflow** | P1 | 40h | 1 | ⚪ 0% |
+| **4. Messages & Workflow** | P1 | 30h/40h | 1 | 🟡 75% COMPLÉTÉ |
 | **5. Questions P1** | P1 | 116h | 2 | ⚪ 0% |
 | **6. Polish** | P2 | 62h | 1.5 | ⚪ 0% |
-| **TOTAL** | | **342h** | **7.5-8 sem** | **36% complété** |
+| **TOTAL** | | **342h** | **7.5-8 sem** | **47% complété** |
 
 ---
 
