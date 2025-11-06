@@ -224,3 +224,17 @@ input.form-check-input[type="radio"] {
     align-items: center;
     margin-bottom: 0;
 }
+
+/* ============================================
+   ICÔNES SUR RADIOS/CHECKBOX
+   ============================================ */
+
+/* Support icônes dans labels DSFR (Remix Icon utility classes) */
+.fr-label span[class^="ri-"],
+.fr-label span[class*=" ri-"],
+.fr-label .fa,
+.fr-label .ls-icon {
+    margin-right: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
