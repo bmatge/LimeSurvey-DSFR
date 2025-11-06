@@ -1,0 +1,89 @@
+/**
+ * CSS Personnalisé pour le thème DSFR
+ *
+ * Utilisez ce fichier pour vos personnalisations spécifiques
+ * sans modifier theme.css
+ */
+
+/* ============================================
+   EXEMPLES DE PERSONNALISATION
+   ============================================ */
+
+/*
+   Décommentez et modifiez selon vos besoins
+*/
+
+/* Modifier la couleur primaire */
+/*
+:root {
+    --blue-france: #000091;
+    --red-marianne: #E1000F;
+}
+*/
+
+/* Changer la police (si vous ne voulez pas Marianne) */
+/*
+body {
+    font-family: Arial, sans-serif !important;
+}
+*/
+
+/* Modifier la largeur max du conteneur */
+/*
+.container-fluid {
+    max-width: 1200px;
+}
+*/
+
+/* Augmenter la taille des boutons */
+/*
+.btn-primary,
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+}
+*/
+
+/* Changer la couleur des questions obligatoires */
+/*
+.question-mandatory,
+.asterisk {
+    color: #FF0000;
+}
+*/
+
+/* Personnaliser le header */
+/*
+#survey-nav.navbar {
+    background-color: #F0F0F0 !important;
+}
+
+#survey-nav .navbar-brand {
+    color: #000000 !important;
+}
+*/
+
+/* Modifier l'ombre des questions */
+/*
+.question-container {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+*/
+
+/* Changer la barre de progression */
+/*
+.progress-bar {
+    background-color: #00AA00 !important;
+}
+*/
+
+/* Personnaliser les messages d'erreur */
+/*
+.alert-error,
+.alert-danger {
+    background-color: #FFE5E5;
+    border-left-color: #FF0000;
+}
+*/
+
+/* Vos styles personnalisés ici */
