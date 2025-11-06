@@ -224,4 +224,37 @@
     // Appeler l'amélioration de la validation
     document.addEventListener('DOMContentLoaded', enhanceFormValidation);
 
+    /**
+     * Fix: Empêcher le scroll en haut lors du clic sur radio/checkbox dans tableaux
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        let savedScrollPosition = 0;
+
+        // Capturer la position AVANT le clic
+        document.addEventListener('mousedown', function(e) {
+            if ((e.target.type === 'radio' || e.target.type === 'checkbox') &&
+                e.target.closest('table')) {
+                savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            }
+        }, true);
+
+        // Restaurer la position APRÈS le clic
+        document.addEventListener('click', function(e) {
+            if ((e.target.type === 'radio' || e.target.type === 'checkbox') &&
+                e.target.closest('table')) {
+                // Restaurer immédiatement
+                window.scrollTo(0, savedScrollPosition);
+
+                // Et aussi après un petit délai au cas où
+                setTimeout(function() {
+                    window.scrollTo(0, savedScrollPosition);
+                }, 10);
+
+                setTimeout(function() {
+                    window.scrollTo(0, savedScrollPosition);
+                }, 50);
+            }
+        }, true);
+    });
+
 })();
