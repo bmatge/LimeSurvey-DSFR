@@ -1,0 +1,110 @@
+{#
+    LimeSurvey - DSFR Theme
+    Question Index Modal with DSFR fr-modal component
+
+    Shows all questions/groups in a DSFR modal dialog.
+#}
+
+{% if (aSurveyInfo.aQuestionIndex.bShow == true) and (aSurveyInfo.format != 'A') %}
+    <!-- DSFR Modal for Question Index -->
+    <dialog id="question-index-modal" class="fr-modal" aria-labelledby="question-index-modal-title">
+        <div class="fr-container fr-container--fluid fr-container-md">
+            <div class="fr-grid-row fr-grid-row--center">
+                <div class="fr-col-12 fr-col-md-10 fr-col-lg-8">
+                    <div class="fr-modal__body">
+                        <div class="fr-modal__header">
+                            <button class="fr-btn--close fr-btn" aria-controls="question-index-modal" title="{{ gT("Close") }}">
+                                {{ gT("Close") }}
+                            </button>
+                        </div>
+                        <div class="fr-modal__content">
+                            <h1 id="question-index-modal-title" class="fr-modal__title">
+                                {{ gT("Question index") }}
+                            </h1>
+
+                            {# Group by Group mode #}
+                            {% if aSurveyInfo.format == 'G' %}
+                                <nav class="fr-nav" role="navigation" aria-label="{{ gT("Question index") }}">
+                                    <ul class="fr-nav__list">
+                                        {% for step, indexItem in aSurveyInfo.aQuestionIndex.items %}
+                                            {% set statusClass = '' %}
+                                            {% set badgeClass = 'fr-badge--info' %}
+
+                                            {# Déterminer le statut #}
+                                            {% if attribute(indexItem.stepStatus, 'index-item-error') is defined and attribute(indexItem.stepStatus, 'index-item-error') == true %}
+                                                {% set badgeClass = 'fr-badge--error' %}
+                                            {% elseif attribute(indexItem.stepStatus, 'index-item-unanswered') is defined and attribute(indexItem.stepStatus, 'index-item-unanswered') == true %}
+                                                {% set badgeClass = 'fr-badge--warning' %}
+                                            {% elseif attribute(indexItem.stepStatus, 'index-item-current') is defined and attribute(indexItem.stepStatus, 'index-item-current') == true %}
+                                                {% set badgeClass = 'fr-badge--success' %}
+                                            {% endif %}
+
+                                            <li class="fr-nav__item">
+                                                {% if attribute(indexItem.stepStatus, 'index-item-current') is defined and attribute(indexItem.stepStatus, 'index-item-current') == true %}
+                                                    <span class="fr-nav__link" aria-current="page">
+                                                        <span class="fr-badge {{ badgeClass }} fr-badge--sm fr-mr-1w">{{ step + 1 }}</span>
+                                                        {{ indexItem.text }}
+                                                    </span>
+                                                {% else %}
+                                                    <a class="fr-nav__link" href="{{ indexItem.url }}" data-limesurvey-submit="{{ indexItem.submit }}">
+                                                        <span class="fr-badge {{ badgeClass }} fr-badge--sm fr-mr-1w">{{ step + 1 }}</span>
+                                                        {{ indexItem.text }}
+                                                    </a>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+
+                            {# Question by Question mode #}
+                            {% if aSurveyInfo.format == 'S' %}
+                                <div class="fr-accordions-group">
+                                    {% for group in aSurveyInfo.aQuestionIndex.items %}
+                                        <section class="fr-accordion">
+                                            <h3 class="fr-accordion__title">
+                                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-group-{{ loop.index }}">
+                                                    {{ group.text }}
+                                                </button>
+                                            </h3>
+                                            <div class="fr-collapse" id="accordion-group-{{ loop.index }}">
+                                                <ul class="fr-menu__list">
+                                                    {% for step, indexItem in group.questions %}
+                                                        {% set badgeClass = 'fr-badge--info' %}
+
+                                                        {% if attribute(indexItem.stepStatus, 'index-item-error') is defined and attribute(indexItem.stepStatus, 'index-item-error') == true %}
+                                                            {% set badgeClass = 'fr-badge--error' %}
+                                                        {% elseif attribute(indexItem.stepStatus, 'index-item-unanswered') is defined and attribute(indexItem.stepStatus, 'index-item-unanswered') == true %}
+                                                            {% set badgeClass = 'fr-badge--warning' %}
+                                                        {% elseif attribute(indexItem.stepStatus, 'index-item-current') is defined and attribute(indexItem.stepStatus, 'index-item-current') == true %}
+                                                            {% set badgeClass = 'fr-badge--success' %}
+                                                        {% endif %}
+
+                                                        <li>
+                                                            {% if attribute(indexItem.stepStatus, 'index-item-current') is defined and attribute(indexItem.stepStatus, 'index-item-current') == true %}
+                                                                <span class="fr-nav__link" aria-current="page">
+                                                                    <span class="fr-badge {{ badgeClass }} fr-badge--sm fr-mr-1w">Q{{ step + 1 }}</span>
+                                                                    {{ indexItem.text }}
+                                                                </span>
+                                                            {% else %}
+                                                                <a class="fr-nav__link" href="{{ indexItem.url }}" data-limesurvey-submit="{{ indexItem.submit }}">
+                                                                    <span class="fr-badge {{ badgeClass }} fr-badge--sm fr-mr-1w">Q{{ step + 1 }}</span>
+                                                                    {{ indexItem.text }}
+                                                                </a>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </section>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+{% endif %}

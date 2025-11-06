@@ -75,8 +75,8 @@ For the survey navigator ("Next", "Back", etc.), see: navigation/navigator.twig
                                     {% if aSurveyInfo.aQuestionIndex.bShow == true and aSurveyInfo.format != 'A' %}
                                         <li>
                                             <button class="fr-btn fr-btn--tertiary fr-btn--sm fr-icon-list-unordered fr-btn--icon-left"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#question-index-modal"
+                                                    data-fr-opened="false"
+                                                    aria-controls="question-index-modal"
                                                     title="{{ gT("Question index") }}">
                                                 {{ gT("Question index") }}
                                             </button>
@@ -147,8 +147,8 @@ For the survey navigator ("Next", "Back", etc.), see: navigation/navigator.twig
                             {% if aSurveyInfo.aQuestionIndex.bShow == true and aSurveyInfo.format != 'A' %}
                                 <li>
                                     <button class="fr-btn fr-icon-list-unordered fr-btn--icon-left"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#question-index-modal">
+                                            data-fr-opened="false"
+                                            aria-controls="question-index-modal">
                                         {{ gT("Question index") }}
                                     </button>
                                 </li>
