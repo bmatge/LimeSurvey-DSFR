@@ -398,11 +398,14 @@ MVP (2 sem) ──→ V1.0 (4 sem) ──→ V1.5 (6 sem) ──→ V2.0 (8 sem)
 
 ---
 
-## 📝 EPIC 3 : Questions Prioritaires (P0)
+## 📝 EPIC 3 : Questions Prioritaires (P0) ✅ COMPLÉTÉ
 
-**Durée** : 2 semaines
-**Effort** : 80 heures
+**Durée** : 2 semaines (Réalisé en ~2h)
+**Effort** : 62 heures estimées
 **Priorité** : 🔴 P0 - Critique
+**Statut** : ✅ 100% COMPLÉTÉ (Date : 2025-11-06)
+
+📄 **[Voir le rapport détaillé](themes/survey/dsfr/EPIC-3-COMPLETED.md)**
 
 ### User Stories
 
@@ -894,12 +897,12 @@ MVP (2 sem) ──→ V1.0 (4 sem) ──→ V1.5 (6 sem) ──→ V2.0 (8 sem)
 | Epic | Priorité | Heures | Semaines | Status |
 |------|----------|--------|----------|--------|
 | **1. Foundation** | P0 | 22h | 0.5 | ✅ 100% COMPLÉTÉ |
-| **2. Layout & Nav** | P0 | 40h | 1 | ⚪ 0% |
-| **3. Questions P0** | P0 | 62h | 1.5 | ⚪ 0% |
+| **2. Layout & Nav** | P0 | 40h | 1 | ✅ 100% COMPLÉTÉ |
+| **3. Questions P0** | P0 | 62h | 1.5 | ✅ 100% COMPLÉTÉ |
 | **4. Messages & Workflow** | P1 | 40h | 1 | ⚪ 0% |
 | **5. Questions P1** | P1 | 116h | 2 | ⚪ 0% |
 | **6. Polish** | P2 | 62h | 1.5 | ⚪ 0% |
-| **TOTAL** | | **342h** | **7.5-8 sem** | **6% complété** |
+| **TOTAL** | | **342h** | **7.5-8 sem** | **36% complété** |
 
 ---
 
