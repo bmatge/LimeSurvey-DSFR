@@ -6,12 +6,14 @@
 #}
 
 <!-- 5-Point Choice DSFR -->
-<fieldset class="fr-fieldset" aria-labelledby="ls-question-text-{{ basename }}">
+<fieldset class="fr-fieldset {{coreClass}}" aria-labelledby="ls-question-text-{{name}}">
     <div class="fr-fieldset__content">
         <div class="fr-grid-row fr-grid-row--gutters">
-            {{ sRows }}
+            {% for aRow in aRows %}
+                {% include './survey/questions/answer/5pointchoice/rows/item_row.twig' with aRow %}
+            {% endfor %}
         </div>
     </div>
 </fieldset>
 
-{{ C.Html.hiddenField("java"~name,value,({'id' : "java"~name,'disabled' : true})) }}
+<input type="hidden" name="java{{name}}" id="java{{name}}" disabled value="{{sessionValue}}" />

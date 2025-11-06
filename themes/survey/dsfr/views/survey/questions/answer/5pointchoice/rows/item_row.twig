@@ -7,11 +7,9 @@
 
 <!-- item_row -->
 <div class="fr-col-auto">
-    <div class="fr-radio-group">
-        <input type="radio" name="{{ name }}" id="answer{{ name }}{{ value }}" value="{{ value }}" {{ checked }}>
-        <label class="fr-label" for="answer{{ name }}{{ value }}">
-            {{ text }}
-        </label>
+    <div class="fr-radio-group {{itemExtraClass}}">
+        <input type="radio" name="{{name}}" id="answer{{id}}" value="{{value}}" {{checkedState}}>
+        <label class="fr-label" for="answer{{id}}">{{labelText}}</label>
     </div>
 </div>
 <!-- end of item_row -->
