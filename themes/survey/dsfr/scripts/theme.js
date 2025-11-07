@@ -237,4 +237,16 @@
         console.log('DSFR: Table classes cleaned');
     });
 
+    /**
+     * Questions conditionnelles: s'assurer que checkconditions est appelé
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('change', function(e) {
+            if ((e.target.type === 'radio' || e.target.type === 'checkbox') &&
+                typeof window.checkconditions === 'function') {
+                window.checkconditions(e.target.value, e.target.name, e.target.type);
+            }
+        }, true);
+    });
+
 })();
