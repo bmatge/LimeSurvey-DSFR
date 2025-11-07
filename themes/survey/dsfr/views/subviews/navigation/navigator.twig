@@ -10,12 +10,13 @@
 
 <!-- DSFR Navigator -->
 <div class="fr-container fr-my-6w" id="{{ aSurveyInfo.id.navigatorcontainer }}" {{ aSurveyInfo.attr.navigatorcontainer }}>
-    <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center">
+    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
 
         <!-- Previous button -->
-        <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+        <div class="fr-col-auto">
             {% if (not aSurveyInfo.popupPreview) and aNavigator.aMovePrev.show %}
                 <button {{ aSurveyInfo.attr.navigatorbuttonprev }}
+                        type="button"
                         accesskey="p"
                         class="fr-btn fr-btn--secondary fr-btn--icon-left fr-icon-arrow-left-line {{ aNavigator.disabled }}"
                         {% if aNavigator.disabled %}disabled{% endif %}>
@@ -25,11 +26,10 @@
         </div>
 
         <!-- Next/Submit button -->
-        <div class="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-text-right">
+        <div class="fr-col-auto">
             {% if (not aSurveyInfo.popupPreview) and aNavigator.aMoveNext.show %}
 
                 {% if aNavigator.aMoveNext.value == "movesubmit" %}
-                    <!-- Button submit -->
                     <button {{ aSurveyInfo.attr.navigatorbuttonsubmit }}
                             accesskey="n"
                             class="fr-btn fr-btn--icon-right fr-icon-check-line {{ aNavigator.disabled }}"
@@ -37,8 +37,8 @@
                         {{ gT("Submit") }}
                     </button>
                 {% else %}
-                    <!-- Button Next -->
                     <button {{ aSurveyInfo.attr.navigatorbuttonnext }}
+                            type="button"
                             accesskey="n"
                             class="fr-btn fr-btn--icon-right fr-icon-arrow-right-line {{ aNavigator.disabled }}"
                             {% if aNavigator.disabled %}disabled{% endif %}>

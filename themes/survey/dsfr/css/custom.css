@@ -147,12 +147,30 @@ table td input[type="checkbox"] {
    MESSAGES VALIDATION - Simple
    ============================================ */
 
+/* Style fr-message DSFR pour messages LimeSurvey */
 .ls-questionhelp,
 .ls-question-message,
 .ls-em-tip {
-    color: #161616 !important;
     font-size: 0.875rem;
-    font-style: italic;
+    line-height: 1.5rem;
+    margin: 0.25rem 0;
+}
+
+/* Info (bleu) */
+.ls-em-success,
+.ls-em-tip:not(.ls-em-error) {
+    color: #0063CB;
+}
+
+/* Erreur (rouge) */
+.ls-em-error {
+    color: #CE0500 !important;
+}
+
+/* Warning (orange) */
+.em_num_answers,
+.em_validation_q {
+    color: #B34000 !important;
 }
 
 /* ============================================
@@ -238,6 +256,21 @@ input:focus,
 textarea:focus {
     border-color: #000091 !important;
     box-shadow: inset 0 -2px 0 0 #000091;
+}
+
+/* ============================================
+   BOUTONS NAVIGATION - Secondary
+   ============================================ */
+
+.fr-btn--secondary {
+    background-color: transparent !important;
+    color: #000091 !important;
+    border: 1px solid #000091 !important;
+    box-shadow: inset 0 0 0 1px #000091 !important;
+}
+
+.fr-btn--secondary:hover {
+    background-color: #F5F5FE !important;
 }
 
 /* TODO: Ajouter les styles spécifiques ici au fur et à mesure */

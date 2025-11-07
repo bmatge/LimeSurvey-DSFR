@@ -463,9 +463,8 @@ table input[type="checkbox"] {
    BOUTONS (DSFR)
    ============================================ */
 
-/* Bouton primaire */
+/* Bouton primaire - NE PAS STYLER button[type="submit"] pour laisser DSFR gérer */
 .btn-primary,
-button[type="submit"],
 input[type="submit"],
 .ls-button-submit,
 .button-primary {
@@ -488,20 +487,19 @@ input[type="submit"],
     box-shadow: inset 0 0 0 1px var(--blue-france);
 }
 
+/* Laisser DSFR gérer les boutons avec classes DSFR */
+
 .btn-primary:hover,
-button[type="submit"]:hover,
 input[type="submit"]:hover {
     background-color: #1212FF;
     box-shadow: inset 0 0 0 1px #1212FF;
 }
 
-.btn-primary:active,
-button[type="submit"]:active {
+.btn-primary:active {
     background-color: #2323FF;
 }
 
-.btn-primary:focus,
-button[type="submit"]:focus {
+.btn-primary:focus {
     outline: 2px solid var(--blue-france);
     outline-offset: 2px;
 }
