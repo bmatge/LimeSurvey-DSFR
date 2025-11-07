@@ -1,0 +1,17 @@
+{#
+/**
+ * Multiple Short Text Row - DSFR Theme
+ * Balanced 50/50 layout (col-6/col-6 instead of col-9/col-3)
+ */
+#}
+
+<!--answer_row_inputtext -->
+<li id="javatbd{{ myfname }}" class="row question-item mb-3 {{ classes }}">
+    <label class="fr-label col-12 col-md-6" for="answer{{ myfname }}">
+        {{ subQuestionText }}
+    </label>
+    <div class="col-12 col-md-6">
+        {{ inputHtml | raw }}
+    </div>
+</li>
+<!-- end of answer_row_inputtext -->
