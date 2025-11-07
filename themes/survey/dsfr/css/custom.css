@@ -139,4 +139,27 @@ table td input[type="checkbox"] {
     font-size: 0.875rem;
 }
 
+/* ============================================
+   SLIDERS - Couleurs DSFR
+   ============================================ */
+
+.slider-track {
+    background-color: #E5E5E5;
+    height: 4px;
+}
+
+.slider-selection {
+    background-color: #000091 !important;
+}
+
+.slider-handle {
+    background-color: #000091 !important;
+    border: 2px solid #FFF;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.slider-handle:hover {
+    background-color: #1212FF !important;
+}
+
 /* TODO: Ajouter les styles spécifiques ici au fur et à mesure */
