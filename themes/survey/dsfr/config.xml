@@ -10,12 +10,12 @@
         <title>DSFR - Système de Design de l'État Français</title>
         <type>theme</type>
         <creationDate>2025-11-06</creationDate>
-        <author>Votre Nom</author>
-        <authorEmail>votre.email@example.com</authorEmail>
-        <authorUrl>https://github.com/votre-compte</authorUrl>
+        <author>Bertrand</author>
+        <authorEmail>Bertrand</authorEmail>
+        <authorUrl>https://github.com/bmatge</authorUrl>
         <copyright>Copyright (C) 2025. Tous droits réservés.</copyright>
         <license>GNU General Public License version 2 or later</license>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <apiVersion>3</apiVersion>
         <description><![CDATA[Thème conforme au Système de Design de l'État Français (DSFR) pour les enquêtes LimeSurvey. <br><a href='https://www.systeme-de-design.gouv.fr/' target='_blank'>Découvrir le DSFR</a>]]></description>
         <lastUpdate>2025-11-07 00:00:00</lastUpdate>
