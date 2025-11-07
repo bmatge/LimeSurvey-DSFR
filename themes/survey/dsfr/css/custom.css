@@ -128,7 +128,8 @@ table td input[type="checkbox"] {
    BLOCS QUESTIONS - Style Card DSFR
    ============================================ */
 
-.question-container {
+.question-container,
+.group-description-card {
     background-color: #FFFFFF;
     border: 1px solid #DDDDDD;
     border-radius: 0;
@@ -162,22 +163,22 @@ table td input[type="checkbox"] {
     margin-top: 0.5rem;
 }
 
-/* Info (bleu) - comme fr-message--info */
+/* Info (bleu France DSFR) */
 .ls-em-success,
 .ls-em-tip:not(.ls-em-error):not(.em_num_answers) {
-    color: #0063CB !important;
+    color: #000091 !important;
 }
 
-/* Erreur (rouge) - comme fr-message--error */
+/* Erreur (rouge DSFR) */
 .ls-em-error {
     color: #CE0500 !important;
 }
 
-/* Warning (orange) - comme fr-message--warning (pas de classe DSFR, on utilise orange) */
+/* Warning (orange DSFR warning-main-525) */
 .em_num_answers,
 .em_validation_q,
 .em_commented_checkbox {
-    color: #B34000 !important;
+    color: #D64D00 !important;
 }
 
 /* ============================================

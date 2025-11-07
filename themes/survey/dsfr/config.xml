@@ -18,9 +18,8 @@
         <version>1.0.0</version>
         <apiVersion>3</apiVersion>
         <description><![CDATA[Thème conforme au Système de Design de l'État Français (DSFR) pour les enquêtes LimeSurvey. <br><a href='https://www.systeme-de-design.gouv.fr/' target='_blank'>Découvrir le DSFR</a>]]></description>
-        <lastUpdate>2025-11-06 00:00:00</lastUpdate>
-        <!-- Hérite du thème vanilla pour bénéficier de la structure de base -->
-        <extends>vanilla</extends>
+        <lastUpdate>2025-11-07 00:00:00</lastUpdate>
+        <!-- Thème autonome 100% DSFR -->
     </metadata>
 
     <!-- Compatibilité -->

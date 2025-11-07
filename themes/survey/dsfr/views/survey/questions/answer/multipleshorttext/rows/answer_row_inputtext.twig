@@ -7,9 +7,11 @@
 
 <!--answer_row_inputtext -->
 <li id="javatbd{{ myfname }}" class="row question-item answer-item text-item mb-3{% if alert %} ls-error-mandatory has-error{% endif %}{{ extraclass }}" {{ sDisplayStyle }}>
-    <label class="control-label fr-label col-12 col-md-6" for="answer{{ myfname }}">
-        {{ processString(question) }}
-    </label>
+    <div class="col-12 col-md-6">
+        <label class="control-label fr-label" for="answer{{ myfname }}">
+            {{ processString(question) }}
+        </label>
+    </div>
     <div class="col-12 col-md-6">
         {% if prefix != '' or suffix != '' %}
         <div class="ls-input-group">
