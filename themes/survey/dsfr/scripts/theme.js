@@ -7,6 +7,34 @@
     'use strict';
 
     // ============================================
+    // FIX SCROLL - DOIT ÊTRE EN PREMIER
+    // ============================================
+
+    // Sauvegarder position IMMÉDIATEMENT au scroll
+    let lastKnownScrollPosition = 0;
+    window.addEventListener('scroll', function() {
+        lastKnownScrollPosition = window.pageYOffset;
+    }, { passive: true });
+
+    // Intercepter TOUS les clics sur radio/checkbox dans tables
+    document.addEventListener('click', function(e) {
+        if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('table')) {
+            const savedPosition = window.pageYOffset;
+            console.log('DSFR: Table input clicked at position', savedPosition);
+
+            // Restaurer PLUSIEURS fois de manière agressive
+            for (let delay = 0; delay <= 200; delay += 10) {
+                setTimeout(function() {
+                    if (window.pageYOffset !== savedPosition) {
+                        window.scrollTo(0, savedPosition);
+                        console.log('DSFR: Restored scroll to', savedPosition);
+                    }
+                }, delay);
+            }
+        }
+    }, true); // Capture phase - s'exécute AVANT les autres listeners
+
+    // ============================================
     // SUPPRESSION DES ERREURS BOOTSTRAP
     // ============================================
 
