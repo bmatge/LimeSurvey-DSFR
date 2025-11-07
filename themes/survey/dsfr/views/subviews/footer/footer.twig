@@ -1,9 +1,6 @@
 {#
 LimeSurvey - DSFR Theme
-Footer DSFR conforme
-
-This footer respects the DSFR (Système de Design de l'État Français) standards.
-See: https://www.systeme-de-design.gouv.fr/
+Footer DSFR conforme avec liens obligatoires
 #}
 
 <!-- DSFR Footer -->
@@ -12,52 +9,47 @@ See: https://www.systeme-de-design.gouv.fr/
         <div class="fr-footer__body">
             <div class="fr-footer__brand fr-enlarge-link">
                 <a href="{{ aSurveyInfo.surveyUrl }}" title="{{ gT("Home") }}">
-                    <p class="fr-logo">
-                        République<br>Française
-                    </p>
+                    <p class="fr-logo">République<br>Française</p>
                 </a>
             </div>
             <div class="fr-footer__content">
-                <p class="fr-footer__content-desc">
-                    {{ aSurveyInfo.name }}
-                </p>
-                {% if aSurveyInfo.options.show_footer_links == "on" or aSurveyInfo.options.show_footer_links is not defined %}
-                    <ul class="fr-footer__content-list">
-                        <li class="fr-footer__content-item">
-                            <a class="fr-footer__content-link" href="#" target="_blank" rel="noopener">
-                                {{ gT("Accessibility: non compliant") }}
-                            </a>
-                        </li>
-                        {% if aSurveyInfo.aNavigator.privacy.show == "Y" %}
-                            <li class="fr-footer__content-item">
-                                <a class="fr-footer__content-link"
-                                   href="{{ aSurveyInfo.aNavigator.privacy.url }}"
-                                   {% if aSurveyInfo.aNavigator.privacy.target %}target="{{ aSurveyInfo.aNavigator.privacy.target }}"{% endif %}>
-                                    {{ gT("Privacy policy") }}
-                                </a>
-                            </li>
-                        {% endif %}
-                        <li class="fr-footer__content-item">
-                            <a class="fr-footer__content-link" href="https://www.limesurvey.org" target="_blank" rel="noopener">
-                                {{ gT("Powered by LimeSurvey") }}
-                            </a>
-                        </li>
-                    </ul>
-                {% endif %}
+                <p class="fr-footer__content-desc">{{ aSurveyInfo.name }}</p>
+                <ul class="fr-footer__content-list">
+                    <li class="fr-footer__content-item">
+                        <a class="fr-footer__content-link" href="https://www.limesurvey.org" target="_blank" rel="noopener">
+                            {{ gT("Powered by LimeSurvey") }}
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="fr-footer__bottom">
             <ul class="fr-footer__bottom-list">
                 <li class="fr-footer__bottom-item">
+                    <a class="fr-footer__bottom-link" href="#">
+                        {{ gT("Accessibility: non compliant") }}
+                    </a>
+                </li>
+                <li class="fr-footer__bottom-item">
+                    <a class="fr-footer__bottom-link" href="#">
+                        {{ gT("Legal notice") }}
+                    </a>
+                </li>
+                {% if aSurveyInfo.aNavigator.privacy.show == "Y" %}
+                <li class="fr-footer__bottom-item">
+                    <a class="fr-footer__bottom-link" href="{{ aSurveyInfo.aNavigator.privacy.url }}">
+                        {{ gT("Privacy policy") }}
+                    </a>
+                </li>
+                {% endif %}
+                <li class="fr-footer__bottom-item">
                     <a class="fr-footer__bottom-link" href="https://www.systeme-de-design.gouv.fr/" target="_blank" rel="noopener">
-                        {{ gT("French State Design System") }}
+                        DSFR
                     </a>
                 </li>
             </ul>
             <div class="fr-footer__bottom-copy">
-                <p>
-                    © {{ "now"|date("Y") }} {{ gT("French Republic") }}
-                </p>
+                <p>© {{ "now"|date("Y") }} {{ gT("French Republic") }}</p>
             </div>
         </div>
     </div>
