@@ -2,7 +2,7 @@
  {% block question_answer %}
  <div class="col-lg-8">
     {% for subquestionId, subquestion in question.subquestions %}
-        <div class="row">
+        <div class="fr-grid-row">
             <div class="col-lg-4 text-end">
                 {% if subquestion.answervalue is same as("Y") %}
                     {{ gT("Yes") }} <i class="fa fa-check-square-o"></i>

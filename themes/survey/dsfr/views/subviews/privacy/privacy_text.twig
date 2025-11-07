@@ -31,7 +31,7 @@
             {% set describeprivacy = "datasecurity_error " ~ describeprivacy %}
         {% endif %}
     {% endif %}
-    <div class="row row-cols-lg-auto g-1 align-items-center">
+    <div class="fr-grid-row row-cols-lg-auto g-1 align-items-center">
         <div class="col-12">
             <input required class="{{ aSurveyInfo.class.privacydataseccheckbox }} form-check-input" type="checkbox" name="datasecurity_accepted" id="datasecurity_accepted"{% if describeprivacy %} aria-describedby="{{describeprivacy}}" {% endif %}/>
             <label for="datasecurity_accepted" class="form-check-label fw-bold {{ aSurveyInfo.class.privacydataseccheckboxlabel }}">

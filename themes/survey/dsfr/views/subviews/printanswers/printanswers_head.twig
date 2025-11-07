@@ -36,7 +36,7 @@
 {# {{dump(aSurveyInfo.groupArray)}} #}
 <div class="container">
     {% if (aSurveyInfo.printPdf != 1) %} 
-        <div class="row">
+        <div class="fr-grid-row">
             <div class="col-sm-6">
                 {{ C.Html.form(aSurveyInfo.printAnswersHeadFormUrl, 'post') }}
                     {{ gT("Export these responses as PDF:") }} <button class="btn btn-outline-secondary" type="submit">{{ gT("PDF export") }}</button>
@@ -48,7 +48,7 @@
                 {{ C.Html.endForm }}
             </div>
         </div>
-        <div class="row">
+        <div class="fr-grid-row">
         <br/>
         </div>
     {% endif %}

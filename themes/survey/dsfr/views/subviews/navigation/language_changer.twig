@@ -25,11 +25,11 @@
         }
     %}
     <!-- Language Changer -->
-    <div class=" {{ aSurveyInfo.class.formgroup }} form-change-lang row row-cols-lg-auto g-1" {{ aSurveyInfo.attr.formgroup }} >
-        <label class="{{ aSurveyInfo.class.controllabel }} col-form-label col-auto fw-bold" {{ aSurveyInfo.attr.controllabel }} for="lang">
+    <div class=" {{ aSurveyInfo.class.formgroup }} form-change-lang fr-grid-row row-cols-lg-auto g-1" {{ aSurveyInfo.attr.formgroup }} >
+        <label class="{{ aSurveyInfo.class.controllabel }} col-form-label fr-col-auto fw-bold" {{ aSurveyInfo.attr.controllabel }} for="lang">
             <span class="control-label" {{ aSurveyInfo.attr.languagechanger }}>{{ gT("Language:") }}</span>
         </label>
-        <div class="col-auto">
+        <div class="fr-col-auto">
                 {{
                     C.Html.dropDownList(
                         'lang',
@@ -39,7 +39,7 @@
                     )
                 }}
         </div>
-        <div class="col-auto">
+        <div class="fr-col-auto">
         <!-- for no js functionality (need form) -->
         {% set buttonhtmlOptions = {
                 'type'          : 'submit',

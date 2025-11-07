@@ -5,7 +5,7 @@
             {{question.answervalue}}
     {% else %}
             {% for subquestionId, subquestion in question.subquestions %}
-                <div class="row">
+                <div class="fr-grid-row">
                     <div class="col-lg-4 text-end">
                         <b>{{subquestion.question}} ({{subquestion.qid}})</b>
                     </div>
