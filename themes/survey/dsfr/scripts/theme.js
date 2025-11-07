@@ -16,41 +16,37 @@
         lastKnownScrollPosition = window.pageYOffset;
     }, { passive: true });
 
-    // SOLUTION FINALE: Monitoring continu avec setInterval toutes les ms
+    // SOLUTION PERMANENTE: Lock scroll après clic sur radio table
+    let scrollLocked = false;
+    let lockedScrollPosition = 0;
+
+    // Monitoring PERMANENT toutes les 1ms
+    setInterval(function() {
+        if (scrollLocked && window.pageYOffset !== lockedScrollPosition) {
+            window.scrollTo(0, lockedScrollPosition);
+        }
+    }, 1);
+
+    // Lock position au clic sur radio table
+    document.addEventListener('click', function(e) {
+        if (e.target.type === 'radio' && e.target.closest('table')) {
+            lockedScrollPosition = window.pageYOffset;
+            scrollLocked = true;
+
+            // Unlock après 800ms
+            setTimeout(function() {
+                scrollLocked = false;
+            }, 800);
+        }
+    }, true);
+
+    // Ajouter tabindex sur radios pour accessibilité clavier
     document.addEventListener('DOMContentLoaded', function() {
-        let isMonitoring = false;
-        let monitoringInterval = null;
-        let targetPosition = 0;
-
-        // Event listener sur TOUS les clics de radios dans tables
-        document.addEventListener('click', function(e) {
-            if (e.target.type === 'radio' && e.target.closest('table')) {
-                targetPosition = window.pageYOffset;
-                console.log('DSFR: Radio clicked at position', targetPosition);
-
-                // Démarrer le monitoring si pas déjà actif
-                if (!isMonitoring) {
-                    isMonitoring = true;
-
-                    // Monitoring CONTINU toutes les 1ms
-                    monitoringInterval = setInterval(function() {
-                        if (window.pageYOffset !== targetPosition) {
-                            console.log('DSFR: RESTORING from', window.pageYOffset, 'to', targetPosition);
-                            window.scrollTo(0, targetPosition);
-                        }
-                    }, 1);
-
-                    // Arrêter après 1 seconde
-                    setTimeout(function() {
-                        clearInterval(monitoringInterval);
-                        isMonitoring = false;
-                        console.log('DSFR: Monitoring stopped');
-                    }, 1000);
-                }
+        document.querySelectorAll('.fr-radio-group input[type="radio"], .fr-checkbox-group input[type="checkbox"]').forEach(function(input) {
+            if (!input.hasAttribute('tabindex')) {
+                input.setAttribute('tabindex', '0');
             }
-        }, true); // Capture phase
-
-        console.log('DSFR: Continuous scroll monitoring active');
+        });
     });
 
     // ============================================
