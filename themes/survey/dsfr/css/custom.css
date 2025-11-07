@@ -129,7 +129,7 @@ table td input[type="checkbox"] {
 }
 
 /* ============================================
-   MESSAGES VALIDATION
+   MESSAGES VALIDATION - Simple
    ============================================ */
 
 .ls-questionhelp,
@@ -137,26 +137,7 @@ table td input[type="checkbox"] {
 .ls-em-tip {
     color: #161616 !important;
     font-size: 0.875rem;
-}
-
-/* Style alerte pour messages */
-.ls-question-message {
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
-    border-left: 4px solid #0063CB;
-    background-color: #E8EDFF;
-}
-
-.ls-em-error {
-    border-left-color: #CE0500 !important;
-    background-color: #FFE9E9 !important;
-    color: #CE0500 !important;
-}
-
-.em_num_answers {
-    border-left-color: #B34000;
-    background-color: #FFE9E6;
-    color: #B34000 !important;
+    font-style: italic;
 }
 
 /* ============================================
