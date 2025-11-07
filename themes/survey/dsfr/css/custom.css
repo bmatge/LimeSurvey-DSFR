@@ -222,4 +222,22 @@ table td input[type="checkbox"] {
     margin-bottom: 1rem;
 }
 
+/* ============================================
+   INPUTS - Bordures DSFR
+   ============================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+.form-control {
+    border-color: #CECECE !important;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #000091 !important;
+    box-shadow: inset 0 -2px 0 0 #000091;
+}
+
 /* TODO: Ajouter les styles spécifiques ici au fur et à mesure */
