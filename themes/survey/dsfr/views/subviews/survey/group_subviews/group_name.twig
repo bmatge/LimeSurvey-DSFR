@@ -18,9 +18,9 @@
     NOTE: see views/subviews/survey/group.twig comments for more infos
 #}
 
-<!-- Group Name -->
+<!-- Group Name DSFR -->
 {% if aGroup.showgroupinfo == 'N' or aGroup.showgroupinfo == 'B' %}
-    <div class="{{ aSurveyInfo.class.grouptitle }} text-center h3 space-col" {{ aSurveyInfo.attr.grouptitle }}>
+    <h2 class="{{ aSurveyInfo.class.grouptitle }} fr-h3 {{ aGroup.class.groupname }}" {{ aSurveyInfo.attr.grouptitle }}>
         {{ processString(aGroup.name) }}
-    </div>
+    </h2>
 {% endif %}
