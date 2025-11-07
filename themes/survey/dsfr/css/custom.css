@@ -147,29 +147,36 @@ table td input[type="checkbox"] {
    MESSAGES VALIDATION - Simple
    ============================================ */
 
-/* Style fr-message DSFR pour messages LimeSurvey */
+/* Copier EXACTEMENT le style fr-message DSFR */
 .ls-questionhelp,
-.ls-question-message,
-.ls-em-tip {
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    margin: 0.25rem 0;
+.ls-question-message {
+    /* Base fr-message */
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0;
+    display: block;
 }
 
-/* Info (bleu) */
+.question-valid-container {
+    margin-top: 0.5rem;
+}
+
+/* Info (bleu) - comme fr-message--info */
 .ls-em-success,
-.ls-em-tip:not(.ls-em-error) {
-    color: #0063CB;
+.ls-em-tip:not(.ls-em-error):not(.em_num_answers) {
+    color: #0063CB !important;
 }
 
-/* Erreur (rouge) */
+/* Erreur (rouge) - comme fr-message--error */
 .ls-em-error {
     color: #CE0500 !important;
 }
 
-/* Warning (orange) */
+/* Warning (orange) - comme fr-message--warning (pas de classe DSFR, on utilise orange) */
 .em_num_answers,
-.em_validation_q {
+.em_validation_q,
+.em_commented_checkbox {
     color: #B34000 !important;
 }
 
