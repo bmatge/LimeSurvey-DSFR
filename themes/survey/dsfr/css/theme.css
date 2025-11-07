@@ -699,12 +699,16 @@ select.error:focus {
    FOOTER
    ============================================ */
 
-.survey-footer,
-footer {
+.survey-footer {
     background-color: #F6F6F6;
     border-top: 1px solid #DDDDDD;
     padding: 2rem 1rem;
     margin-top: 3rem;
+}
+
+/* Footer DSFR fond blanc */
+footer.fr-footer {
+    background-color: #FFFFFF;
 }
 
 .survey-footer .container-fluid {
