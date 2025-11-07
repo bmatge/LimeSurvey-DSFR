@@ -16,27 +16,39 @@
         lastKnownScrollPosition = window.pageYOffset;
     }, { passive: true });
 
-    // Intercepter TOUS les clics sur radio/checkbox dans tables
-    document.addEventListener('click', function(e) {
-        if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('table')) {
-            const savedPosition = window.pageYOffset;
-            console.log('DSFR: Table input clicked at position', savedPosition);
+    // SOLUTION: Remplacer les onclick qui causent le scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        // Trouver tous les radios dans les tableaux
+        document.querySelectorAll('table input[type="radio"]').forEach(function(radio) {
+            if (radio.hasAttribute('onclick')) {
+                const originalOnclick = radio.getAttribute('onclick');
+                console.log('DSFR: Replacing onclick on radio', radio.id);
 
-            // Observer le scroll avec un MutationObserver ET setInterval
-            const intervalId = setInterval(function() {
-                if (window.pageYOffset !== savedPosition) {
-                    console.log('DSFR: Scroll changed from', savedPosition, 'to', window.pageYOffset, '- RESTORING');
+                // Supprimer l'onclick
+                radio.removeAttribute('onclick');
+
+                // Ajouter un event listener qui ne scroll pas
+                radio.addEventListener('click', function(e) {
+                    const savedPosition = window.pageYOffset;
+
+                    // Exécuter le code onclick original via eval (pas idéal mais nécessaire)
+                    try {
+                        eval(originalOnclick);
+                    } catch(err) {
+                        console.error('Error in onclick:', err);
+                    }
+
+                    // Forcer la position immédiatement et de manière répétée
                     window.scrollTo(0, savedPosition);
-                }
-            }, 1); // Vérifier TOUTES LES MILLISECONDES
-
-            // Arrêter après 500ms
-            setTimeout(function() {
-                clearInterval(intervalId);
-                console.log('DSFR: Scroll monitoring stopped');
-            }, 500);
-        }
-    }, true); // Capture phase - s'exécute AVANT les autres listeners
+                    setTimeout(() => window.scrollTo(0, savedPosition), 0);
+                    setTimeout(() => window.scrollTo(0, savedPosition), 10);
+                    setTimeout(() => window.scrollTo(0, savedPosition), 50);
+                    setTimeout(() => window.scrollTo(0, savedPosition), 100);
+                });
+            }
+        });
+        console.log('DSFR: Radio onclick handlers replaced');
+    });
 
     // ============================================
     // SUPPRESSION DES ERREURS BOOTSTRAP
