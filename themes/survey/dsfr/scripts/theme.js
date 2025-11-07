@@ -225,53 +225,43 @@
     document.addEventListener('DOMContentLoaded', enhanceFormValidation);
 
     /**
-     * Fix: Empêcher le scroll en haut lors du clic sur radio/checkbox dans tableaux
+     * SOLUTION DÉFINITIVE: Empêcher le scroll causé par checkconditions
      */
     document.addEventListener('DOMContentLoaded', function() {
-        let savedScrollPosition = 0;
+        // Override global scrollTo pour le désactiver temporairement
+        let allowScroll = true;
+        const originalScrollTo = window.scrollTo;
+        const originalScrollBy = window.scrollBy;
 
-        // Capturer la position AVANT le clic
-        document.addEventListener('mousedown', function(e) {
-            if ((e.target.type === 'radio' || e.target.type === 'checkbox') &&
-                e.target.closest('table')) {
-                savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        window.scrollTo = function(x, y) {
+            if (allowScroll) {
+                originalScrollTo.call(window, x, y);
             }
-        }, true);
+        };
 
-        // Restaurer la position APRÈS le clic
-        document.addEventListener('click', function(e) {
-            if ((e.target.type === 'radio' || e.target.type === 'checkbox') &&
-                e.target.closest('table')) {
-                // Restaurer immédiatement
-                window.scrollTo(0, savedScrollPosition);
-
-                // Et aussi après un petit délai au cas où
-                setTimeout(function() {
-                    window.scrollTo(0, savedScrollPosition);
-                }, 10);
-
-                setTimeout(function() {
-                    window.scrollTo(0, savedScrollPosition);
-                }, 50);
+        window.scrollBy = function(x, y) {
+            if (allowScroll) {
+                originalScrollBy.call(window, x, y);
             }
-        }, true);
+        };
 
-        // Bloquer les événements LimeSurvey qui causent le scroll
-        document.addEventListener('ClassChangeError', function(e) {
-            e.stopPropagation();
-        }, true);
-
-        document.addEventListener('ClassChangeGood', function(e) {
-            e.stopPropagation();
-        }, true);
-
-        // Override scrollIntoView pour les éléments de tableau
+        // Override scrollIntoView
         const originalScrollIntoView = Element.prototype.scrollIntoView;
         Element.prototype.scrollIntoView = function() {
-            if (!this.closest('table')) {
+            if (allowScroll) {
                 originalScrollIntoView.apply(this, arguments);
             }
         };
+
+        // Sur clic dans table: désactiver scroll temporairement
+        document.addEventListener('click', function(e) {
+            if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('table')) {
+                allowScroll = false;
+                setTimeout(function() { allowScroll = true; }, 200);
+            }
+        }, true);
+
+        console.log('DSFR: Scroll prevention active for table inputs');
     });
 
 })();
