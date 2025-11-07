@@ -32,7 +32,30 @@
 
 ---
 
-## ⚠️ Issues Connues (À Résoudre)
+## ⚠️ Issues Connues
+
+### 1. Scroll vers le haut lors du clic sur radio/checkbox dans tableaux Array
+**Statut** : ⚠️ LIMITATION LIMESURVEY - Non résolvable facilement
+**Priorité** : P3 - Impact UX mineur
+**Problème** : Lors du clic sur un radio/checkbox dans un tableau Array, la page scroll automatiquement vers le haut
+**Cause racine** : Comportement natif de LimeSurvey lié aux IDs `javatbd*` utilisés comme ancres + fonction `checkconditions()`
+**Impact** : UX légèrement dégradée dans les tableaux Array - utilisateur doit rescroller manuellement
+**Tentatives de fix** :
+- ✅ Override `scrollTo()`, `scrollBy()`, `scrollIntoView()` - Inefficace
+- ✅ Override `focus()` avec `preventScroll: true` - Inefficace
+- ✅ Blocage événements `ClassChangeError`/`ClassChangeGood` - Inefficace
+- ✅ `scroll-behavior: auto` - Inefficace
+- ✅ Restaurations multiples position (0ms, 10ms, 50ms, 100ms) - Inefficace
+
+**Conclusion** : Le scroll semble être un comportement profondément ancré dans le core LimeSurvey, probablement lié au système d'ancres ou à un mécanisme bas-niveau du navigateur.
+
+**Workaround** : Aucun actuellement - les utilisateurs doivent rescroller manuellement
+**Fix potentiel V2** : Modifier le core LimeSurvey pour ne plus utiliser d'ancres, ou patcher la fonction `checkconditions()`
+**Acceptabilité** : Acceptable pour V1 - défaut mineur, ne bloque pas l'utilisation
+
+---
+
+## ⚠️ Autres Issues Connues
 
 ### 4. Index des questions (Modal) non fonctionnel
 **Statut** : ⚠️ CONNU - À faire dans EPIC 4
