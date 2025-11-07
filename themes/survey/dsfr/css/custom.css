@@ -100,6 +100,11 @@ html, body {
     overflow-anchor: none !important;
 }
 
+/* Supprimer padding-top excessif */
+#outerframeContainer {
+    padding-top: 0 !important;
+}
+
 /* Masquer les labels xs-visibility (accessibilité seulement, pas visuels) */
 table .ls-label-xs-visibility {
     position: absolute;
@@ -108,10 +113,14 @@ table .ls-label-xs-visibility {
     height: 1px;
 }
 
-/* Radios centrés dans cellules */
+/* Centrer radios/checkbox dans cellules */
+table td {
+    text-align: center;
+}
+
 table td input[type="radio"],
 table td input[type="checkbox"] {
-    display: block;
+    display: inline-block;
     margin: 0 auto;
 }
 
@@ -167,6 +176,50 @@ table td input[type="checkbox"] {
 
 .slider-handle:hover {
     background-color: #1212FF !important;
+}
+
+/* ============================================
+   LABELS - Alignement gauche
+   ============================================ */
+
+/* Override base.css qui met text-align: right */
+.form-horizontal .control-label {
+    text-align: left !important;
+}
+
+/* ============================================
+   ALERTES - DSFR Style
+   ============================================ */
+
+.alert {
+    padding: 1rem 1.5rem;
+    border-left: 4px solid;
+    border-radius: 0;
+}
+
+.alert-warning {
+    background-color: #FFE9E6;
+    border-left-color: #B34000;
+}
+
+.alert .h4,
+.alert strong {
+    color: #CE0500 !important;
+}
+
+/* Cartes d'erreur Bootstrap → DSFR */
+.card {
+    border: 1px solid #DDDDDD;
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    margin-bottom: 1rem;
 }
 
 /* TODO: Ajouter les styles spécifiques ici au fur et à mesure */

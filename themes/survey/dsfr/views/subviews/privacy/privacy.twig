@@ -16,16 +16,16 @@
 
 #}
 
-<!-- Privacy message -->
+<!-- Privacy message DSFR -->
 
-<div class="{{ aSurveyInfo.class.privacycontainer }} row" {{ aSurveyInfo.attr.privacycontainer }}>
-    <div class="{{ aSurveyInfo.class.privacycol }}  col-12 col-centered" {{ aSurveyInfo.attr.privacycol }}>
+<div class="fr-container fr-my-4w">
+    <div class="fr-col-12 {{ aSurveyInfo.class.privacycontainer }}" {{ aSurveyInfo.attr.privacycontainer }}>
         {% if (aSurveyInfo.options.hideprivacyinfo == "off" ) %}
             {% block anonymous %}
                 {% if (aSurveyInfo.anonymized == "Y") %}
-                <div class="{{ aSurveyInfo.class.privacyhead }} h4 text-primary " {{ aSurveyInfo.attr.privacyhead }}>
+                <h3 class="{{ aSurveyInfo.class.privacyhead }} fr-h4" {{ aSurveyInfo.attr.privacyhead }}>
                     {{ gT("This survey is anonymous.") }}
-                </div>
+                </h3>
                 <div>
                     <p class="{{ aSurveyInfo.class.privacybody }}" {{ aSurveyInfo.attr.privacybody }}>
                         {{

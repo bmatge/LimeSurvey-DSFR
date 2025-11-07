@@ -4,7 +4,7 @@
 
     Structure conforme : https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/indicateur-d-etapes/
 #}
-{% if aSurveyInfo.showprogress == 'Y' and aSurveyInfo.format != 'A' and not aSurveyInfo.aCompleted %}
+{% if aSurveyInfo.showprogress == 'Y' and aSurveyInfo.format != 'A' and not aSurveyInfo.aCompleted and aSurveyInfo.aQuestionIndex.items %}
     <!-- DSFR Stepper -->
     <div class="fr-container fr-my-4w">
         {# Utiliser les données de l'index des questions #}
