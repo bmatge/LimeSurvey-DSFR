@@ -7,49 +7,6 @@
     'use strict';
 
     // ============================================
-    // FIX SCROLL - DOIT ÊTRE EN PREMIER
-    // ============================================
-
-    // Sauvegarder position IMMÉDIATEMENT au scroll
-    let lastKnownScrollPosition = 0;
-    window.addEventListener('scroll', function() {
-        lastKnownScrollPosition = window.pageYOffset;
-    }, { passive: true });
-
-    // SOLUTION PERMANENTE: Lock scroll après clic sur radio table
-    let scrollLocked = false;
-    let lockedScrollPosition = 0;
-
-    // Monitoring PERMANENT toutes les 1ms
-    setInterval(function() {
-        if (scrollLocked && window.pageYOffset !== lockedScrollPosition) {
-            window.scrollTo(0, lockedScrollPosition);
-        }
-    }, 1);
-
-    // Lock position au clic sur radio table
-    document.addEventListener('click', function(e) {
-        if (e.target.type === 'radio' && e.target.closest('table')) {
-            lockedScrollPosition = window.pageYOffset;
-            scrollLocked = true;
-
-            // Unlock après 800ms
-            setTimeout(function() {
-                scrollLocked = false;
-            }, 800);
-        }
-    }, true);
-
-    // Ajouter tabindex sur radios pour accessibilité clavier
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.fr-radio-group input[type="radio"], .fr-checkbox-group input[type="checkbox"]').forEach(function(input) {
-            if (!input.hasAttribute('tabindex')) {
-                input.setAttribute('tabindex', '0');
-            }
-        });
-    });
-
-    // ============================================
     // SUPPRESSION DES ERREURS BOOTSTRAP
     // ============================================
 
@@ -268,70 +225,16 @@
     document.addEventListener('DOMContentLoaded', enhanceFormValidation);
 
     /**
-     * SOLUTION DÉFINITIVE: Empêcher le scroll causé par checkconditions
+     * SOLUTION SIMPLE: Nettoyer les classes problématiques
      */
     document.addEventListener('DOMContentLoaded', function() {
-        // Override global scrollTo pour le désactiver temporairement
-        let allowScroll = true;
-        const originalScrollTo = window.scrollTo;
-        const originalScrollBy = window.scrollBy;
+        // Supprimer answer-item, radio-item, checkbox-item dans les tableaux
+        document.querySelectorAll('table td.answer-item, table td.radio-item, table td.checkbox-item').forEach(function(td) {
+            td.classList.remove('answer-item', 'radio-item', 'checkbox-item', 'dsfr-enhanced');
+            td.style.display = 'table-cell';
+        });
 
-        window.scrollTo = function(x, y) {
-            if (allowScroll) {
-                originalScrollTo.call(window, x, y);
-            }
-        };
-
-        window.scrollBy = function(x, y) {
-            if (allowScroll) {
-                originalScrollBy.call(window, x, y);
-            }
-        };
-
-        // Override scrollIntoView
-        const originalScrollIntoView = Element.prototype.scrollIntoView;
-        Element.prototype.scrollIntoView = function() {
-            if (allowScroll) {
-                originalScrollIntoView.apply(this, arguments);
-            }
-        };
-
-        // Sur clic dans table: désactiver scroll temporairement
-        // Sur clic dans table: restaurer position immédiatement
-        document.addEventListener('click', function(e) {
-            if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('table')) {
-                console.log('DSFR: Click detected on table input');
-                const currentScroll = window.pageYOffset;
-                
-                allowScroll = false;
-
-                // Restaurer position multiple fois
-                setTimeout(() => window.scrollTo(0, currentScroll), 0);
-                setTimeout(() => window.scrollTo(0, currentScroll), 10);
-                setTimeout(() => window.scrollTo(0, currentScroll), 50);
-                setTimeout(() => window.scrollTo(0, currentScroll), 100);
-
-                setTimeout(() => {
-                    allowScroll = true;
-                    console.log('DSFR: Scroll re-enabled');
-                }, 300);
-            }
-        }, true);
-
-        // NOUVELLE TENTATIVE: Override focus() sur les éléments
-        const originalFocus = HTMLElement.prototype.focus;
-        HTMLElement.prototype.focus = function(options) {
-            if (!allowScroll) {
-                console.log('DSFR: Blocked focus on', this);
-                // Focus sans scroll
-                const newOptions = Object.assign({}, options, { preventScroll: true });
-                originalFocus.call(this, newOptions);
-            } else {
-                originalFocus.call(this, options);
-            }
-        };
-
-        console.log('DSFR: Scroll prevention active for table inputs');
+        console.log('DSFR: Table classes cleaned');
     });
 
 })();

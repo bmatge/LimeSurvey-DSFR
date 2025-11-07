@@ -88,202 +88,31 @@ body > article {
 .fr-stepper__steps[data-fr-current-step="5"][data-fr-steps="5"]::after { width: 100%; }
 
 /* ============================================
-   TABLEAUX / ARRAYS
-   ============================================ */
-
-/* Fix pour les tableaux Array - empêcher form-control de casser le layout */
-.fr-table .form-control,
-table.fr-table input.form-control,
-table.table input.form-control,
-table.table-bordered input.form-control {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: inline-block !important;
-    box-sizing: border-box !important;
-}
-
-/* Les inputs dans les tableaux doivent rester dans leurs cellules */
-.fr-table td,
-table.table td,
-table.table-bordered td {
-    vertical-align: middle;
-    padding: 0.5rem;
-}
-
-.fr-table td input,
-.fr-table td textarea,
-table.table td input,
-table.table td textarea {
-    min-width: 0;
-    width: 100%;
-    margin: 0;
-}
-
-/* Empêcher les inputs de déborder des cellules */
-table td input.form-control {
-    max-width: 100% !important;
-}
-
-/* SOLUTION CSS: Empêcher le scroll vers les ancres javatbd */
-[id^="javatbd"] {
-    scroll-margin-top: -9999px !important;
-}
-
-:target {
-    scroll-margin-top: -9999px !important;
-}
-
-/* Responsive tables - scroll horizontal sur petit écran */
-.fr-table--responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-@media (max-width: 768px) {
-    .fr-table--responsive {
-        display: block;
-        width: 100%;
-    }
-
-    .fr-table--responsive table {
-        min-width: 600px; /* Force largeur min pour tableaux */
-    }
-}
-
-/* ============================================
    COMPOSANTS LIMESURVEY SPÉCIFIQUES
    ============================================ */
 
-/* Convertir form-control en fr-input dans les questions simples */
-input.form-control:not(.fr-table input),
-textarea.form-control:not(.fr-table textarea),
-select.form-control:not(.fr-table select) {
-    /* Hérite des styles fr-input si pas déjà appliqué */
-    font-family: "Marianne", Arial, sans-serif;
-    line-height: 1.5;
-}
-
 /* ============================================
-   CHECKBOX/RADIO BOOTSTRAP (form-check)
+   FIX SCROLL TABLEAUX + VISIBILITÉ
    ============================================ */
 
-/* Les checkbox/radio avec classe form-check-input doivent être visibles */
-input.form-check-input[type="checkbox"],
-input.form-check-input[type="radio"] {
-    position: static !important;
-    opacity: 1 !important;
-    width: 1.25rem !important;
-    height: 1.25rem !important;
-    margin: 0 !important;
-    display: inline-block !important;
-    vertical-align: middle;
-}
-
-/* Container form-check doit être en flex pour aligner input + label */
-.form-check,
-.checkbox-item.form-check,
-.radio-item.form-check {
-    display: flex !important;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.form-check-label {
-    margin: 0;
-    cursor: pointer;
-}
-
-/* ============================================
-   BOUTONS RADIO STYLÉS (btn-check + btn)
-   ============================================ */
-
-/* Yes/No, Gender - Forcer affichage des vrais radios */
-/* Désactiver le système btn-check Bootstrap */
-
-.yesno-button input[type="radio"],
-.gender-button input[type="radio"] {
-    position: static !important;
-    opacity: 1 !important;
-    width: auto !important;
-    height: auto !important;
-    margin-right: 0.5rem;
-}
-
-/* Cacher les labels "boutons" Bootstrap et utiliser des labels normaux */
-.yesno-button .btn,
-.gender-button .btn {
-    all: unset;
-    display: inline;
-    cursor: pointer;
-    font-family: "Marianne", Arial, sans-serif;
-    padding: 0;
-}
-
-/* Layout simple pour Yes/No et Gender */
-.yesno-button,
-.gender-button {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.yesno-button .answer-item,
-.gender-button .answer-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-}
-
-/* ============================================
-   ICÔNES SUR RADIOS/CHECKBOX
-   ============================================ */
-
-/* Support icônes dans labels DSFR (Remix Icon utility classes) */
-.fr-label span[class^="ri-"],
-.fr-label span[class*=" ri-"],
-.fr-label .fa,
-.fr-label .ls-icon {
-    margin-right: 0.5rem;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-/* ============================================
-   FIXES SCROLL & APPEARANCE
-   ============================================ */
-
-/* Désactiver smooth scroll pour éviter le jump */
+/* Désactiver scroll anchoring */
 html, body {
-    scroll-behavior: auto !important;
+    overflow-anchor: none !important;
 }
 
-/* Forcer l'apparence native des radio/checkbox */
-.fr-radio-group input[type="radio"],
-input[type="radio"] {
-    appearance: auto !important;
-    -webkit-appearance: radio !important;
-    -moz-appearance: radio !important;
+/* Masquer les labels xs-visibility (accessibilité seulement, pas visuels) */
+table .ls-label-xs-visibility {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
 }
 
-.fr-checkbox-group input[type="checkbox"],
-input[type="checkbox"] {
-    appearance: auto !important;
-    -webkit-appearance: checkbox !important;
-    -moz-appearance: checkbox !important;
+/* Radios centrés dans cellules */
+table td input[type="radio"],
+table td input[type="checkbox"] {
+    display: block;
+    margin: 0 auto;
 }
 
-/* CRITICAL: Empêcher le body de recevoir le focus */
-body {
-    outline: none !important;
-}
-
-body:focus {
-    outline: none !important;
-}
-
-/* Les inputs doivent garder le focus */
-input:focus,
-label:focus {
-    outline: 2px solid #000091;
-    outline-offset: 2px;
-}
+/* TODO: Ajouter les styles spécifiques ici au fur et à mesure */
