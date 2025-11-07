@@ -22,15 +22,19 @@
             const savedPosition = window.pageYOffset;
             console.log('DSFR: Table input clicked at position', savedPosition);
 
-            // Restaurer PLUSIEURS fois de manière agressive
-            for (let delay = 0; delay <= 200; delay += 10) {
-                setTimeout(function() {
-                    if (window.pageYOffset !== savedPosition) {
-                        window.scrollTo(0, savedPosition);
-                        console.log('DSFR: Restored scroll to', savedPosition);
-                    }
-                }, delay);
-            }
+            // Observer le scroll avec un MutationObserver ET setInterval
+            const intervalId = setInterval(function() {
+                if (window.pageYOffset !== savedPosition) {
+                    console.log('DSFR: Scroll changed from', savedPosition, 'to', window.pageYOffset, '- RESTORING');
+                    window.scrollTo(0, savedPosition);
+                }
+            }, 1); // Vérifier TOUTES LES MILLISECONDES
+
+            // Arrêter après 500ms
+            setTimeout(function() {
+                clearInterval(intervalId);
+                console.log('DSFR: Scroll monitoring stopped');
+            }, 500);
         }
     }, true); // Capture phase - s'exécute AVANT les autres listeners
 
