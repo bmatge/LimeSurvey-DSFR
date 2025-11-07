@@ -14,13 +14,7 @@ Footer DSFR conforme avec liens obligatoires
             </div>
             <div class="fr-footer__content">
                 <p class="fr-footer__content-desc">{{ aSurveyInfo.name }}</p>
-                <ul class="fr-footer__content-list">
-                    <li class="fr-footer__content-item">
-                        <a class="fr-footer__content-link" href="https://www.limesurvey.org" target="_blank" rel="noopener">
-                            {{ gT("Powered by LimeSurvey") }}
-                        </a>
-                    </li>
-                </ul>
+                {# Liens optionnels ici si besoin #}
             </div>
         </div>
         <div class="fr-footer__bottom">
@@ -43,8 +37,13 @@ Footer DSFR conforme avec liens obligatoires
                 </li>
                 {% endif %}
                 <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="https://www.systeme-de-design.gouv.fr/" target="_blank" rel="noopener">
-                        DSFR
+                    <a class="fr-footer__bottom-link" href="#">
+                        {{ gT("Cookies management") }}
+                    </a>
+                </li>
+                <li class="fr-footer__bottom-item">
+                    <a class="fr-footer__bottom-link" href="https://www.limesurvey.org" target="_blank" rel="noopener">
+                        Powered by LimeSurvey
                     </a>
                 </li>
             </ul>
