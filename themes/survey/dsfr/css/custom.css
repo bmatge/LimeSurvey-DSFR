@@ -115,4 +115,17 @@ table td input[type="checkbox"] {
     margin: 0 auto;
 }
 
+/* ============================================
+   BLOCS QUESTIONS - Style Card DSFR
+   ============================================ */
+
+.question-container {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
 /* TODO: Ajouter les styles spécifiques ici au fur et à mesure */
