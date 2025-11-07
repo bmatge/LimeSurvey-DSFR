@@ -256,10 +256,27 @@
         // Sur clic dans table: désactiver scroll temporairement
         document.addEventListener('click', function(e) {
             if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('table')) {
+                console.log('DSFR: Click detected on table input, disabling scroll');
                 allowScroll = false;
-                setTimeout(function() { allowScroll = true; }, 200);
+                setTimeout(function() {
+                    allowScroll = true;
+                    console.log('DSFR: Scroll re-enabled');
+                }, 300);
             }
         }, true);
+
+        // NOUVELLE TENTATIVE: Override focus() sur les éléments
+        const originalFocus = HTMLElement.prototype.focus;
+        HTMLElement.prototype.focus = function(options) {
+            if (!allowScroll) {
+                console.log('DSFR: Blocked focus on', this);
+                // Focus sans scroll
+                const newOptions = Object.assign({}, options, { preventScroll: true });
+                originalFocus.call(this, newOptions);
+            } else {
+                originalFocus.call(this, options);
+            }
+        };
 
         console.log('DSFR: Scroll prevention active for table inputs');
     });
