@@ -124,6 +124,15 @@ table td input.form-control {
     max-width: 100% !important;
 }
 
+/* SOLUTION CSS: Empêcher le scroll vers les ancres javatbd */
+[id^="javatbd"] {
+    scroll-margin-top: -9999px !important;
+}
+
+:target {
+    scroll-margin-top: -9999px !important;
+}
+
 /* Responsive tables - scroll horizontal sur petit écran */
 .fr-table--responsive {
     overflow-x: auto;
