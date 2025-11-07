@@ -22,10 +22,9 @@
                                 {{ gT("Question index") }}
                             </h1>
 
-                            {# Group by Group mode #}
+                            {# Group by Group mode - Liste verticale #}
                             {% if aSurveyInfo.format == 'G' %}
-                                <nav class="fr-nav" role="navigation" aria-label="{{ gT("Question index") }}">
-                                    <ul class="fr-nav__list">
+                                <ul class="fr-nav__list" style="display: block;">
                                         {% for step, indexItem in aSurveyInfo.aQuestionIndex.items %}
                                             {% set statusClass = '' %}
                                             {% set badgeClass = 'fr-badge--info' %}
@@ -53,8 +52,7 @@
                                                 {% endif %}
                                             </li>
                                         {% endfor %}
-                                    </ul>
-                                </nav>
+                                </ul>
                             {% endif %}
 
                             {# Question by Question mode #}
