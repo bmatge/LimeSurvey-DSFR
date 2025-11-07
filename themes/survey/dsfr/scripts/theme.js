@@ -16,38 +16,41 @@
         lastKnownScrollPosition = window.pageYOffset;
     }, { passive: true });
 
-    // SOLUTION: Remplacer les onclick qui causent le scroll
+    // SOLUTION FINALE: Monitoring continu avec setInterval toutes les ms
     document.addEventListener('DOMContentLoaded', function() {
-        // Trouver tous les radios dans les tableaux
-        document.querySelectorAll('table input[type="radio"]').forEach(function(radio) {
-            if (radio.hasAttribute('onclick')) {
-                const originalOnclick = radio.getAttribute('onclick');
-                console.log('DSFR: Replacing onclick on radio', radio.id);
+        let isMonitoring = false;
+        let monitoringInterval = null;
+        let targetPosition = 0;
 
-                // Supprimer l'onclick
-                radio.removeAttribute('onclick');
+        // Event listener sur TOUS les clics de radios dans tables
+        document.addEventListener('click', function(e) {
+            if (e.target.type === 'radio' && e.target.closest('table')) {
+                targetPosition = window.pageYOffset;
+                console.log('DSFR: Radio clicked at position', targetPosition);
 
-                // Ajouter un event listener qui ne scroll pas
-                radio.addEventListener('click', function(e) {
-                    const savedPosition = window.pageYOffset;
+                // Démarrer le monitoring si pas déjà actif
+                if (!isMonitoring) {
+                    isMonitoring = true;
 
-                    // Exécuter le code onclick original via eval (pas idéal mais nécessaire)
-                    try {
-                        eval(originalOnclick);
-                    } catch(err) {
-                        console.error('Error in onclick:', err);
-                    }
+                    // Monitoring CONTINU toutes les 1ms
+                    monitoringInterval = setInterval(function() {
+                        if (window.pageYOffset !== targetPosition) {
+                            console.log('DSFR: RESTORING from', window.pageYOffset, 'to', targetPosition);
+                            window.scrollTo(0, targetPosition);
+                        }
+                    }, 1);
 
-                    // Forcer la position immédiatement et de manière répétée
-                    window.scrollTo(0, savedPosition);
-                    setTimeout(() => window.scrollTo(0, savedPosition), 0);
-                    setTimeout(() => window.scrollTo(0, savedPosition), 10);
-                    setTimeout(() => window.scrollTo(0, savedPosition), 50);
-                    setTimeout(() => window.scrollTo(0, savedPosition), 100);
-                });
+                    // Arrêter après 1 seconde
+                    setTimeout(function() {
+                        clearInterval(monitoringInterval);
+                        isMonitoring = false;
+                        console.log('DSFR: Monitoring stopped');
+                    }, 1000);
+                }
             }
-        });
-        console.log('DSFR: Radio onclick handlers replaced');
+        }, true); // Capture phase
+
+        console.log('DSFR: Continuous scroll monitoring active');
     });
 
     // ============================================
