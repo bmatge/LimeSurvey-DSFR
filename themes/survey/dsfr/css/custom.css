@@ -280,4 +280,13 @@ textarea:focus {
     background-color: #F5F5FE !important;
 }
 
+/* ============================================
+   QUESTION - Masquer numéro/code redondants
+   ============================================ */
+
+.question-number,
+.question-code {
+    display: none !important;
+}
+
 /* TODO: Ajouter les styles spécifiques ici au fur et à mesure */
