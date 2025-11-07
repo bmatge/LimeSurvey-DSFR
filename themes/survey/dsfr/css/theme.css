@@ -706,9 +706,10 @@ select.error:focus {
     margin-top: 3rem;
 }
 
-/* Footer DSFR fond blanc */
-footer.fr-footer {
-    background-color: #FFFFFF;
+/* Footer DSFR fond blanc (override DSFR et custom) */
+footer.fr-footer,
+.fr-footer {
+    background-color: #FFFFFF !important;
 }
 
 .survey-footer .container-fluid {
