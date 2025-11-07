@@ -50,13 +50,9 @@ body > article {
    STEPPER DSFR - Fallback visuel
    ============================================ */
 
-/* Affichage de la barre de progression du stepper */
+/* DSFR gère le stepper - minimal override */
 .fr-stepper__steps {
-    height: 0.25rem;
-    background-color: #E5E5E5;
     position: relative;
-    margin: 1rem 0;
-    border-radius: 0.125rem;
     overflow: hidden;
 }
 
