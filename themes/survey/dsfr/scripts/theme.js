@@ -254,11 +254,21 @@
         };
 
         // Sur clic dans table: désactiver scroll temporairement
+        // Sur clic dans table: restaurer position immédiatement
         document.addEventListener('click', function(e) {
             if ((e.target.type === 'radio' || e.target.type === 'checkbox') && e.target.closest('table')) {
-                console.log('DSFR: Click detected on table input, disabling scroll');
+                console.log('DSFR: Click detected on table input');
+                const currentScroll = window.pageYOffset;
+                
                 allowScroll = false;
-                setTimeout(function() {
+
+                // Restaurer position multiple fois
+                setTimeout(() => window.scrollTo(0, currentScroll), 0);
+                setTimeout(() => window.scrollTo(0, currentScroll), 10);
+                setTimeout(() => window.scrollTo(0, currentScroll), 50);
+                setTimeout(() => window.scrollTo(0, currentScroll), 100);
+
+                setTimeout(() => {
                     allowScroll = true;
                     console.log('DSFR: Scroll re-enabled');
                 }, 300);
