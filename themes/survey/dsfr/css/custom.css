@@ -271,3 +271,19 @@ input[type="checkbox"] {
     -webkit-appearance: checkbox !important;
     -moz-appearance: checkbox !important;
 }
+
+/* CRITICAL: Empêcher le body de recevoir le focus */
+body {
+    outline: none !important;
+}
+
+body:focus {
+    outline: none !important;
+}
+
+/* Les inputs doivent garder le focus */
+input:focus,
+label:focus {
+    outline: 2px solid #000091;
+    outline-offset: 2px;
+}
